@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65608037174743614}
   - component: {fileID: 23024337386451046}
   - component: {fileID: 54518725573148484}
-  - component: {fileID: 114800443150121278}
+  - component: {fileID: 114330443627447576}
   m_Layer: 0
   m_Name: Fan
   m_TagString: Untagged
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114800443150121278
+--- !u!114 &114330443627447576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,11 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1213072872174234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5482e4ef45e88ec4f8709b120a6d9766, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae8bfb37b48f224f811a8048cf2e695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
   isRepared: 0
   maxHP: 0
   repareCooldown: 0
-  repareBox: {fileID: 65378140282268894}
+  repareCollider: {fileID: 65378140282268894}

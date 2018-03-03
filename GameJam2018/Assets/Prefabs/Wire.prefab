@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65686764100006758}
   - component: {fileID: 23858715093473600}
   - component: {fileID: 54974019349389638}
-  - component: {fileID: 114728265382174942}
+  - component: {fileID: 114604516753928582}
   m_Layer: 0
   m_Name: Wire
   m_TagString: Untagged
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.45, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114728265382174942
+--- !u!114 &114604516753928582
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,11 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120053172845488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5482e4ef45e88ec4f8709b120a6d9766, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f15266ca200e1242a38ee3f7af5012a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
   isRepared: 0
   maxHP: 0
   repareCooldown: 0
-  repareBox: {fileID: 65931869325770804}
+  repareCollider: {fileID: 65931869325770804}

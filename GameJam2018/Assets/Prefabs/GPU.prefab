@@ -140,4 +140,4 @@ MonoBehaviour:
   isRepared: 0
   maxHP: 0
   repareCooldown: 0
-  repareBox: {fileID: 65904259346726656}
+  repareCollider: {fileID: 65904259346726656}

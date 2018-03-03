@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GPU : BaseObject {
+public class Screw : BaseObject {
+
 
     // Use this for initialization
     void Start()
     {
-        HP = 350;
-        maxHP = 350;
+        HP = 1000;
+        maxHP = 1000;
         isRepared = true;
         repareCooldown = 1.0f;
     }

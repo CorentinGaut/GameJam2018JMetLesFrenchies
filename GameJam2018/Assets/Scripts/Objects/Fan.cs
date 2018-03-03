@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GPU : BaseObject {
+public class Fan : BaseObject {
+
 
     // Use this for initialization
     void Start()
     {
-        HP = 350;
-        maxHP = 350;
+        HP = 200;
+        maxHP = 200;
         isRepared = true;
         repareCooldown = 1.0f;
     }

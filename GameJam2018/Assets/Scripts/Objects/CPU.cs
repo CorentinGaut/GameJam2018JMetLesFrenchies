@@ -7,8 +7,8 @@ public class CPU : BaseObject {
 
     // Use this for initialization
     void Start () {
-        HP = 100;
-        maxHP = 200;
+        HP = 250;
+        maxHP = 250;
         isRepared = false;
         repareCooldown = 1.0f;
 	}

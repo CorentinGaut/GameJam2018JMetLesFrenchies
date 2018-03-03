@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GPU : BaseObject {
+public class Port : BaseObject {
+
 
     // Use this for initialization
     void Start()
     {
-        HP = 350;
-        maxHP = 350;
+        HP = 100;
+        maxHP = 100;
         isRepared = true;
         repareCooldown = 1.0f;
     }
