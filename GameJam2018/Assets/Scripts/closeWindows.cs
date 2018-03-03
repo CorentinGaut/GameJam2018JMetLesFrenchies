@@ -25,6 +25,10 @@ public class closeWindows : MonoBehaviour {
     void functionFermer()
     {
         this.gameObject.SetActive(false);
+        if (pagePrecedent != null)
+        {
+            pagePrecedent.SetActive(false);
+        }
     }
 
     void functionPrecedent()

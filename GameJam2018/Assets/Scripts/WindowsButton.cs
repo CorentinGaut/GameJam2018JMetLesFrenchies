@@ -78,6 +78,7 @@ public class WindowsButton : MonoBehaviour {
         {
             boolGoogle = true;
             google.SetActive(boolGoogle);
+            boolGoogle = false;
         }
         
     }
