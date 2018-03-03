@@ -55,7 +55,11 @@ public class WindowsButton : MonoBehaviour {
 <<<<<<< HEAD
         //son
         audioSource=GetComponent<AudioSource>();
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> c5a9c9b... Correction du merge
         // Poste de Travail Initialisation
         posteTravail = this.transform.Find("PostTravail").gameObject;
         boolPosteTravail = false;
