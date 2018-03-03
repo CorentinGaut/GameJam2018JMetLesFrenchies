@@ -11,6 +11,7 @@ public class ParticleEmmiter : MonoBehaviour {
 	void Start () {
         var rsh = repareParticle.shape;
         var dsh = repareParticle.shape;
+        //rsh.position = new Vector3(0, 0, 0);
         rsh.scale = box.size;
         dsh.scale = box.size;
         if (!GetComponentInParent<BaseObject>().isRepared)
