@@ -31,7 +31,7 @@ public class WindowsButton : MonoBehaviour {
                                         functionFermer, // fonction de poste travail
                                         functionFermer}; // fonction de diablo
 
-    listButtons = this.GetComponentsInChildren<Button>();
+        listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
         {
             listButtons[i].onClick.AddListener(tabFonctions[i]);
