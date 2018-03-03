@@ -27,6 +27,11 @@ public abstract class BaseObject : MonoBehaviour {
         isRepared = false;
     }
 
+    public virtual void Rotate(int angle)
+    {
+        gameObject.transform.Rotate(new Vector3(0, angle, 0));
+    }
+
     public virtual void Repare()
     {
         if (repareCooldown <= 0 && !isRepared)

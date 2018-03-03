@@ -27,10 +27,22 @@ public class CharacterControler : MonoBehaviour
 
         Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            closestObject.GetComponent<BaseObject>().Rotate(-45);
+            Debug.Log("droite");
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            closestObject.GetComponent<BaseObject>().Rotate(45);
+            Debug.Log("gauche");
         }
 
         pos = gameObject.transform.position;
