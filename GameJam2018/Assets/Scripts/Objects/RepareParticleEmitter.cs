@@ -10,6 +10,8 @@ public class RepareParticleEmitter : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        box = transform.parent.GetComponent<BoxCollider>();
+
         var rsh = repareParticle.shape;
         rsh.scale = box.size;
     }
