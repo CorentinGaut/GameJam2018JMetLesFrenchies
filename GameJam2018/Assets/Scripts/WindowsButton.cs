@@ -19,6 +19,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolGoogle2;
     private GameObject posteTravail;
     private bool boolPosteTravail;
+    private GameObject diablo;
+    private bool boolDiablo;
 
     // Use this for initialization
     void Start () {
@@ -26,9 +28,10 @@ public class WindowsButton : MonoBehaviour {
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
-                                        functionFermer}; // fonction de poste travail
+                                        functionFermer, // fonction de poste travail
+                                        functionFermer}; // fonction de diablo
 
-        listButtons = this.GetComponentsInChildren<Button>();
+    listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
         {
             listButtons[i].onClick.AddListener(tabFonctions[i]);
@@ -52,6 +55,12 @@ public class WindowsButton : MonoBehaviour {
         posteTravail = this.transform.Find("PostTravail").gameObject;
         boolPosteTravail = false;
         posteTravail.SetActive(boolPosteTravail);
+
+        // Diablo Initialisation
+        diablo = this.transform.Find("Diablo").gameObject;
+        boolDiablo = false;
+        diablo.SetActive(boolDiablo);
+
     }
 	
 	// Update is called once per frame
@@ -62,12 +71,12 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonDemarrer()
     {
         Debug.Log("Test bouton demarrer réussi !");
-        if (boolDemarrer)
+        if (boolDemarrer) // Cacher demarrer
         {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
-        else if (!boolDemarrer)
+        else if (!boolDemarrer) // Afficher Demarrer
         {
             boolDemarrer = true;
             colomneDemarrer.SetActive(boolDemarrer);
@@ -83,6 +92,11 @@ public class WindowsButton : MonoBehaviour {
             posteTravail.SetActive(boolPosteTravail);
             boolPosteTravail = false;
         }
+        if (boolDemarrer) // Cacher demarrer
+        {
+            boolDemarrer = false;
+            colomneDemarrer.SetActive(boolDemarrer);
+        }
     }
 
     void functionButtonInternet()
@@ -94,7 +108,11 @@ public class WindowsButton : MonoBehaviour {
             google.SetActive(boolGoogle);
             boolGoogle = false;
         }
-        
+        if (boolDemarrer) // Cacher demarrer
+        {
+            boolDemarrer = false;
+            colomneDemarrer.SetActive(boolDemarrer);
+        }
     }
 
     void functionFermer()
@@ -141,11 +159,27 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonDiablo()
     {
         Debug.Log("Test bouton diablo reussi !");
+        if (!boolDiablo)
+        {
+            boolDiablo = true;
+            diablo.SetActive(boolDiablo);
+            boolDiablo = false;
+        }
+        if (boolDemarrer) // Cacher demarrer
+        {
+            boolDemarrer = false;
+            colomneDemarrer.SetActive(boolDemarrer);
+        }
     }
 
     void functionButtonInvCommande()
     {
         Debug.Log("Test bouton Invite de commande reussi !");
+        if (boolDemarrer) // Cacher demarrer
+        {
+            boolDemarrer = false;
+            colomneDemarrer.SetActive(boolDemarrer);
+        }
     }
 
     void functionButtonTousProgs()
