@@ -10,6 +10,7 @@ public class CharacterControler : MonoBehaviour
     GameObject closestObject;
     Vector3 pos;
     float minDistObject;
+    GameObject pickedUpObject;
 
     // Use this for initialization
     void Start()
@@ -25,9 +26,10 @@ public class CharacterControler : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
 
+
         Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
@@ -42,6 +44,13 @@ public class CharacterControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             closestObject.GetComponent<BaseObject>().Rotate(45);
+            Debug.Log("gauche");
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            PickUp();
             Debug.Log("gauche");
         }
 
@@ -62,13 +71,31 @@ public class CharacterControler : MonoBehaviour
         }
     }
 
+    private void PickUp()
+    {
+        if(closestObject!=null&& pickedUpObject==null)
+        {
+            pickedUpObject = closestObject;
+            closestObject.transform.position += Vector3.up;
+            closestObject.transform.SetParent(gameObject.transform);
+            closestObject.transform.localPosition = new Vector3(0, closestObject.GetComponent<BoxCollider>().size.y, closestObject.GetComponent<BoxCollider>().size.magnitude+1);
+        }
+        else if(pickedUpObject!=null)
+        {
+            pickedUpObject.transform.position -= Vector3.up;
+            pickedUpObject.transform.SetParent(null);
+            pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.GetComponent<BoxCollider>().size.y/2, pickedUpObject.transform.position.z);
+            pickedUpObject = null;
+        }
+    }
+
     void FixedUpdate()
     {
         if (direction.magnitude > 0.1)
         {
             if (direction.magnitude > 1)
                 direction.Normalize();
-            this.transform.position += direction;     
+            this.transform.position += direction/3;     
         }
     }
 
@@ -80,5 +107,9 @@ public class CharacterControler : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         closeObjects.Remove(other.gameObject);
+        if(closeObjects.Count==0)
+        {
+            closestObject = null;
+        }
     }
 }
