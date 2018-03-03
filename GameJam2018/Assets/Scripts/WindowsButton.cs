@@ -18,6 +18,9 @@ public class WindowsButton : MonoBehaviour {
     private GameObject google2;
     private bool boolGoogle2;
 
+//Son
+    private AudioSource audioSource;
+
     // Use this for initialization
     void Start () {
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
@@ -29,6 +32,7 @@ public class WindowsButton : MonoBehaviour {
         for (int i = 0; i < listButtons.Length; i++)
         {
             listButtons[i].onClick.AddListener(tabFonctions[i]);
+            listButtons[i].onClick.AddListener(playClick);
         }
         Debug.Log(listButtons.Length);
 
@@ -44,6 +48,9 @@ public class WindowsButton : MonoBehaviour {
         google2 = this.transform.Find("ChanceResult").gameObject;
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
+
+        //son
+        audioSource=GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -122,5 +129,9 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonTousProgs()
     {
         Debug.Log("Test bouton Tous les progs reussi !");
+    }
+
+    void playClick(){
+        audioSource.Play();
     }
 }
