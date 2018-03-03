@@ -17,13 +17,16 @@ public class WindowsButton : MonoBehaviour {
     private bool boolGoogle;
     private GameObject google2;
     private bool boolGoogle2;
+    private GameObject posteTravail;
+    private bool boolPosteTravail;
 
     // Use this for initialization
     void Start () {
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
-                                        functionFermer, functionPrecedent}; // fonction de google2
+                                        functionFermer, functionPrecedent,// fonction de google2
+                                        functionFermer}; // fonction de poste travail
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -44,6 +47,11 @@ public class WindowsButton : MonoBehaviour {
         google2 = this.transform.Find("ChanceResult").gameObject;
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
+
+        // Poste de Travail Initialisation
+        posteTravail = this.transform.Find("PostTravail").gameObject;
+        boolPosteTravail = false;
+        posteTravail.SetActive(boolPosteTravail);
     }
 	
 	// Update is called once per frame
@@ -69,6 +77,12 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonPosteTravail()
     {
         Debug.Log("Test bouton Poste de Travail reussi !");
+        if (!boolPosteTravail)
+        {
+            boolPosteTravail = true;
+            posteTravail.SetActive(boolPosteTravail);
+            boolPosteTravail = false;
+        }
     }
 
     void functionButtonInternet()
