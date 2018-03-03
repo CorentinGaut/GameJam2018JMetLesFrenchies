@@ -152,7 +152,7 @@ public class CharacterControler : MonoBehaviour
         StartCoroutine(FinStun());
     }
 
-    void ralentir(){
+    public void ralentir(){
         tweakRalentissement=vitesseRalenti;
         StartCoroutine(finRalentissement());    
     }
