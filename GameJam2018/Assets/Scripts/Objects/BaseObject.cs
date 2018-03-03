@@ -27,6 +27,7 @@ public abstract class BaseObject : MonoBehaviour {
     {
         HP = 0;
         isRepared = false;
+        destroyParticle.StartEmitDestroyParticle();
     }
 
     public virtual void Rotate(int angle)
@@ -40,8 +41,14 @@ public abstract class BaseObject : MonoBehaviour {
         {
             HP += 10;
             repareCooldown = 1;
+            repareParticle.StartEmitParticle();
             if (HP == maxHP)
+            {
                 isRepared = true;
+                repareParticle.StopEmitParticle();
+                destroyParticle.StopEmitParticle();
+            }
+                
         }
     }
 }

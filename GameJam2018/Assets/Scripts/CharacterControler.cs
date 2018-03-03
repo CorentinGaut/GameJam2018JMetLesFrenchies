@@ -39,6 +39,12 @@ public class CharacterControler : MonoBehaviour
             Debug.Log("ENFONCE LA");
         }
 
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("blub");
+            closestObject.GetComponent<BaseObject>().Destroy();
+        }
+
         if (Input.GetButtonDown("RotateD"))
         {
             if (pickedUpObject == null)
