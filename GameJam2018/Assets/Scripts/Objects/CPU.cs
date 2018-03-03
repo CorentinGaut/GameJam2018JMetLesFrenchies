@@ -15,20 +15,17 @@ public class CPU : BaseObject {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (Input.GetButton("Jump"))
-        //    Repare();
-        //if (Input.GetButton("Fire1"))
-        //    Destroy();
+
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
 	}
 
-    protected override void Destroy()
+    public override void Destroy()
     {
         base.Destroy();
     }
 
-    protected override void Repare()
+    public override void Repare()
     {
         base.Repare();
     }

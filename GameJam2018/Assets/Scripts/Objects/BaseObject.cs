@@ -21,13 +21,13 @@ public abstract class BaseObject : MonoBehaviour {
 		
 	}
 
-    protected virtual void Repare()
+    public virtual void Destroy()
     {
         HP = 0;
         isRepared = false;
     }
 
-    protected virtual void Destroy()
+    public virtual void Repare()
     {
         if (repareCooldown <= 0 && !isRepared)
         {
