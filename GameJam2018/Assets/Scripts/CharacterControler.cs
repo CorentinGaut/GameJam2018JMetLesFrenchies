@@ -83,7 +83,7 @@ public class CharacterControler : MonoBehaviour
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, closestObject.GetComponent<BoxCollider>().size.z*2f);
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, (closestObject.transform.localScale.z/2f)+1);
         }
         else if(pickedUpObject!=null)
         {
