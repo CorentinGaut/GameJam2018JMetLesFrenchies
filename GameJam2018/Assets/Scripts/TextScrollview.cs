@@ -23,14 +23,19 @@ public class TextScrollview : MonoBehaviour {
 	void AddText(string txt){
 		//var clone = Instantiate(prefab,this.transform.position-this.transform.up,this.transform.rotation);
 		//var tmp = this.transform;
-		var tmp=prefab.rectTransform;
-		var tmpPos=tmp.position;
-		tmpPos.y-=14*compteur;
-		Debug.Log(tmpPos.y);
-		compteur++;
-		var clone = Instantiate(prefab,tmp);
-		var texte = clone.text;
-		texte+=txt+"_";
-		clone.text=texte;
+		// Debug.Log(compteur);
+		// var tmp=this.GetComponent<RectTransform>() as RectTransform;
+		// var tmpPos=tmp.anchoredPosition;
+		// tmpPos.x=-954.7f;
+		// tmpPos.y=tmpPos.y-50f*compteur;
+		// compteur++;
+		// tmp.position=tmpPos;
+		// Debug.Log(tmp.position);
+		// var clone = Instantiate(prefab,tmp);
+		// var texte = clone.text;
+		// texte+=txt+"_";
+		// clone.text=texte;
+		// var tmp3=this.GetComponent<RectTransform>().anchoredPosition;
+		// tmp3.x=0;
 	}
 }
