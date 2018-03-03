@@ -141,3 +141,4 @@ MonoBehaviour:
   maxHP: 0
   repareCooldown: 0
   repareCollider: {fileID: 65378140282268894}
+  baseHeight: 0
