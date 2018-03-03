@@ -27,23 +27,26 @@ public class CharacterControler : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
 
+        //a pour poser
+        //x pour reparer
+        //gachettes pour tourner un objet
 
         Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButtonDown("Repare"))
         {
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("RotateD"))
         {
             if (pickedUpObject == null)
                 closestObject.GetComponent<BaseObject>().Rotate(-45);
             Debug.Log("droite");
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetButtonDown("RotateG"))
         {
             if(pickedUpObject == null)
             closestObject.GetComponent<BaseObject>().Rotate(45);
@@ -51,7 +54,7 @@ public class CharacterControler : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Poser"))
         {
             PickUp();
         }
