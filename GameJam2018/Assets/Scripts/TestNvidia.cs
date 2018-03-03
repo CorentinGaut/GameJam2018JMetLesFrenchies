@@ -12,7 +12,6 @@ public class TestNvidia : MonoBehaviour {
 	void Start () {
         butTest = this.GetComponent<Button>();
         butTest.onClick.AddListener(freezeScreen);
-        Debug.Log(butTest);
     }
 	
 	// Update is called once per frame

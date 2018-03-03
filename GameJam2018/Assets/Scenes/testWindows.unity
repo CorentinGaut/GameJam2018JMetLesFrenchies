@@ -2141,7 +2141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &805974479
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2173,6 +2173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons: {fileID: 117800100}
   blueBlock: {fileID: 1208939951084216, guid: 62976efccc8416345ac20d57bfa8607f, type: 2}
+  timeDelay: 10
 --- !u!114 &805974481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,7 +4362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000058442354}
+  m_AnchoredPosition: {x: 0, y: -0.00003167987}
   m_SizeDelta: {x: 0, y: 358.07}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1859829008
