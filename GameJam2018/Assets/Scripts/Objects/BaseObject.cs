@@ -41,7 +41,7 @@ public abstract class BaseObject : MonoBehaviour {
         {
             HP += 10;
             repareCooldown = 1;
-            repareParticle.StartEmitParticle();
+            StartCoroutine("RepareTimer");
             if (HP == maxHP)
             {
                 isRepared = true;
@@ -50,5 +50,12 @@ public abstract class BaseObject : MonoBehaviour {
             }
                 
         }
+    }
+
+    IEnumerator RepareTimer()
+    {
+        repareParticle.StartEmitParticle();
+        yield return new WaitForSeconds(repareCooldown);
+        repareParticle.StopEmitParticle();
     }
 }

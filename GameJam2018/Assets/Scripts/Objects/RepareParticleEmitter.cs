@@ -18,13 +18,11 @@ public class RepareParticleEmitter : MonoBehaviour {
 
     public void StartEmitParticle()
     {
-                var rem = repareParticle.emission;
-                rem.enabled = true; 
+        repareParticle.Play();
     }
 
     public void StopEmitParticle()
     {
-                var rem = repareParticle.emission;
-                rem.enabled = false; 
+        repareParticle.Stop();
     }
 }
