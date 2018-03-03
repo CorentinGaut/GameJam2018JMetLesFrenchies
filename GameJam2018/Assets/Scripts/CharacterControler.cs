@@ -6,8 +6,8 @@ public class CharacterControler : MonoBehaviour
 {
 
     Vector3 direction;
-    List<GameObject> closeObjects;
-    GameObject closestObject;
+    public List<GameObject> closeObjects;
+    public GameObject closestObject;
     Vector3 pos;
     float minDistObject;
     GameObject pickedUpObject;
@@ -83,7 +83,7 @@ public class CharacterControler : MonoBehaviour
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, -((closestObject.transform.localScale.z/2f)+1));
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, /*-((closestObject.transform.localScale.z/2f)+1)*/-((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
         }
         else if(pickedUpObject!=null)
         {
