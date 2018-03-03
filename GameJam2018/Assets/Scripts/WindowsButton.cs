@@ -17,6 +17,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolGoogle;
     private GameObject google2;
     private bool boolGoogle2;
+    private GameObject posteTravail;
+    private bool boolPosteTravail;
 
 //Son
     private AudioSource audioSource;
@@ -26,7 +28,8 @@ public class WindowsButton : MonoBehaviour {
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
-                                        functionFermer}; // fonction de google2
+                                        functionFermer, functionPrecedent,// fonction de google2
+                                        functionFermer}; // fonction de poste travail
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -51,6 +54,10 @@ public class WindowsButton : MonoBehaviour {
 
         //son
         audioSource=GetComponent<AudioSource>();
+        // Poste de Travail Initialisation
+        posteTravail = this.transform.posteTravail = this.transform.Find("PostTravail").gameObject;
+        boolPosteTravail = false;
+        posteTravail.SetActive(boolPosteTravail);
     }
 	
 	// Update is called once per frame
@@ -76,29 +83,50 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonPosteTravail()
     {
         Debug.Log("Test bouton Poste de Travail reussi !");
+        if (!boolPosteTravail)
+        {
+            boolPosteTravail = true;
+            posteTravail.SetActive(boolPosteTravail);
+            boolPosteTravail = false;
+        }
     }
 
     void functionButtonInternet()
     {
         Debug.Log("Test bouton internet réussi !");
-        if (!boolDemarrer)
+        if (!boolGoogle)
         {
-            boolDemarrer = true;
-            google.SetActive(boolDemarrer);
+            boolGoogle = true;
+            google.SetActive(boolGoogle);
+            boolGoogle = false;
         }
         
     }
 
     void functionFermer()
     {
-        boolDemarrer = false;
-        google.SetActive(boolGoogle);
+        Debug.Log("Ne doit rien faire (Fermer)");
+    }
+
+    void functionPrecedent()
+    {
+        Debug.Log("Ne doit rien faire (Retour)");
     }
 
     void functionButtonChance()
     {
-        boolGoogle2 = true;
-        google2.SetActive(boolGoogle2);
+        if (!boolGoogle2) // Ouvre nouvelle page google2
+        {
+            boolGoogle2 = true;
+            google2.SetActive(boolGoogle2);
+            boolGoogle2 = false;
+            if (boolGoogle) // Ferme l'ancienne page (google1)
+            {
+                boolGoogle = false;
+                google.SetActive(boolGoogle);
+                boolGoogle = true;
+            }
+        }
     }
 
     void functionButtonRecherche()

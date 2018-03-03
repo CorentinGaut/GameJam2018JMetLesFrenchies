@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class closeWindows : MonoBehaviour {
 
     public Button close;
+    public Button precedent;
+    public GameObject pagePrecedent;
 
     // Use this for initialization
     void Start () {
         close.onClick.AddListener(functionFermer);
+        if (pagePrecedent != null)
+        {
+            precedent.onClick.AddListener(functionPrecedent);
+        }
     }
 	
 	// Update is called once per frame
@@ -19,5 +25,15 @@ public class closeWindows : MonoBehaviour {
     void functionFermer()
     {
         this.gameObject.SetActive(false);
+        if (pagePrecedent != null)
+        {
+            pagePrecedent.SetActive(false);
+        }
+    }
+
+    void functionPrecedent()
+    {
+        this.gameObject.SetActive(false);
+        pagePrecedent.SetActive(true);
     }
 }
