@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4123978610131106}
   - component: {fileID: 199511408330046822}
   - component: {fileID: 198966207494673934}
-  - component: {fileID: 114416284939963574}
+  - component: {fileID: 114308518130533618}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 4018483004926206}
   - component: {fileID: 199315342327395124}
   - component: {fileID: 198981529482658932}
-  - component: {fileID: 114651850595202302}
+  - component: {fileID: 114428419847044726}
   m_Layer: 0
   m_Name: RepareParticleEmmiter
   m_TagString: Untagged
@@ -227,7 +227,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 1, z: 3.76}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114416284939963574
+--- !u!114 &114308518130533618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -235,12 +235,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1937533015118390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f31c97f002af64bb34ecce1b83cff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedParticle: {fileID: 198966207494673934}
   box: {fileID: 0}
---- !u!114 &114651850595202302
+--- !u!114 &114428419847044726
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1941575310031072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182b6927d4d46a54b87f27dfcb4e3ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d86695bbdf0c304cae7ed8bc60b062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   repareParticle: {fileID: 198981529482658932}
@@ -270,6 +270,8 @@ MonoBehaviour:
   repareCooldown: 0
   repareCollider: {fileID: 0}
   baseHeight: 0
+  repareParticle: {fileID: 114428419847044726}
+  destroyParticle: {fileID: 114308518130533618}
 --- !u!198 &198966207494673934
 ParticleSystem:
   m_ObjectHideFlags: 1

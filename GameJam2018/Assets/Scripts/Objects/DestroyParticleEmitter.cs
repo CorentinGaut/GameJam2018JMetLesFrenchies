@@ -15,19 +15,17 @@ public class DestroyParticleEmitter : MonoBehaviour {
         dsh.scale = new Vector3(box.size.x,box.size.z,box.size.y);
         if (!GetComponentInParent<BaseObject>().isRepared)
         {
-            var dem = destroyedParticle.emission;
-            dem.enabled = true;
+            destroyedParticle.Play();
         }
     }
 
     public void StartEmitDestroyParticle()
     {
-                var dem = destroyedParticle.emission;
-                dem.enabled = true;        
+        destroyedParticle.Play();
     }
 
     public void StopEmitParticle()
     {
-                var dem = destroyedParticle.emission;
+        destroyedParticle.Stop();
     }
 }

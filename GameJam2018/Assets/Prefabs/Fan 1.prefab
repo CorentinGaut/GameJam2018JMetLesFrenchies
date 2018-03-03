@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4499886588576446}
   - component: {fileID: 199537439503609212}
   - component: {fileID: 198030971063990498}
-  - component: {fileID: 114287258025378884}
+  - component: {fileID: 114213519625979798}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4281702657381458}
   - component: {fileID: 199179917693052088}
   - component: {fileID: 198163113917016572}
-  - component: {fileID: 114027936139224490}
+  - component: {fileID: 114209686919467600}
   m_Layer: 0
   m_Name: RepareParticleEmmiter
   m_TagString: Untagged
@@ -227,7 +227,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.65, y: 2.4252882, z: 0.64}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114027936139224490
+--- !u!114 &114209686919467600
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -235,12 +235,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415380721542336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182b6927d4d46a54b87f27dfcb4e3ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d86695bbdf0c304cae7ed8bc60b062e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   repareParticle: {fileID: 198163113917016572}
   box: {fileID: 0}
---- !u!114 &114287258025378884
+--- !u!114 &114213519625979798
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049720169575922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f31c97f002af64bb34ecce1b83cff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedParticle: {fileID: 198030971063990498}
@@ -270,6 +270,8 @@ MonoBehaviour:
   repareCooldown: 0
   repareCollider: {fileID: 65501703256516528}
   baseHeight: 0
+  repareParticle: {fileID: 114209686919467600}
+  destroyParticle: {fileID: 114213519625979798}
 --- !u!198 &198030971063990498
 ParticleSystem:
   m_ObjectHideFlags: 1

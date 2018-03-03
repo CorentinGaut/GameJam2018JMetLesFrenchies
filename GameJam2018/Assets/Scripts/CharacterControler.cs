@@ -54,12 +54,18 @@ public class CharacterControler : MonoBehaviour
         //x pour reparer
         //gachettes pour tourner un objet
 
-        Camera.main.transform.position = gameObject.transform.position + new Vector3(7, 10, -10);
+        Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
         if (Input.GetButtonDown("Repare"))
         {
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
+        }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("blub");
+            closestObject.GetComponent<BaseObject>().Destroy();
         }
 
         if (Input.GetButtonDown("RotateD"))

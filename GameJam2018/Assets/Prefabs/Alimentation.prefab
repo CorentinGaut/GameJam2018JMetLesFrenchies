@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4378662934222088}
   - component: {fileID: 199780443904091594}
   - component: {fileID: 198228026207512672}
-  - component: {fileID: 114103106869405108}
+  - component: {fileID: 114620677002952924}
   m_Layer: 0
   m_Name: RepareParticleEmmiter
   m_TagString: Untagged
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4357672136141882}
   - component: {fileID: 199014848172119138}
   - component: {fileID: 198957204819813560}
-  - component: {fileID: 114156822087089120}
+  - component: {fileID: 114382084238387842}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -229,32 +229,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.3, y: 2.1578798, z: 7}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114103106869405108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1382454268914352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182b6927d4d46a54b87f27dfcb4e3ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repareParticle: {fileID: 198228026207512672}
-  box: {fileID: 0}
---- !u!114 &114156822087089120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1465137994978594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyedParticle: {fileID: 198957204819813560}
-  box: {fileID: 0}
 --- !u!114 &114355488429628678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,6 +246,34 @@ MonoBehaviour:
   repareCooldown: 0
   repareCollider: {fileID: 65379727676112376}
   baseHeight: 0
+  repareParticle: {fileID: 114620677002952924}
+  destroyParticle: {fileID: 114382084238387842}
+--- !u!114 &114382084238387842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465137994978594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f31c97f002af64bb34ecce1b83cff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyedParticle: {fileID: 198957204819813560}
+  box: {fileID: 0}
+--- !u!114 &114620677002952924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382454268914352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d86695bbdf0c304cae7ed8bc60b062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repareParticle: {fileID: 198228026207512672}
+  box: {fileID: 0}
 --- !u!198 &198228026207512672
 ParticleSystem:
   m_ObjectHideFlags: 1

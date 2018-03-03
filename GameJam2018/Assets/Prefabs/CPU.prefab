@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4155461804781898}
   - component: {fileID: 199561802564087080}
   - component: {fileID: 198646573262819850}
-  - component: {fileID: 114731351255443544}
+  - component: {fileID: 114774739330732628}
   m_Layer: 0
   m_Name: RepareParticleEmmiter
   m_TagString: Untagged
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 4446839670851734}
   - component: {fileID: 199892496151917896}
   - component: {fileID: 198980147888664272}
-  - component: {fileID: 114839099050465212}
+  - component: {fileID: 114286275640189036}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -244,20 +244,9 @@ MonoBehaviour:
   repareCooldown: 0
   repareCollider: {fileID: 65835484335070504}
   baseHeight: 0
---- !u!114 &114731351255443544
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616345544547420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 182b6927d4d46a54b87f27dfcb4e3ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  repareParticle: {fileID: 198646573262819850}
-  box: {fileID: 0}
---- !u!114 &114839099050465212
+  repareParticle: {fileID: 114774739330732628}
+  destroyParticle: {fileID: 114286275640189036}
+--- !u!114 &114286275640189036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -265,10 +254,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1853869726337584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f31c97f002af64bb34ecce1b83cff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedParticle: {fileID: 198980147888664272}
+  box: {fileID: 0}
+--- !u!114 &114774739330732628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616345544547420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d86695bbdf0c304cae7ed8bc60b062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repareParticle: {fileID: 198646573262819850}
   box: {fileID: 0}
 --- !u!198 &198646573262819850
 ParticleSystem:

@@ -10,6 +10,8 @@ public abstract class BaseObject : MonoBehaviour {
     public float repareCooldown;
     public Collider repareCollider;
     public float baseHeight;
+    public RepareParticleEmitter repareParticle;
+    public DestroyParticleEmitter destroyParticle;
 
 
 	// Use this for initialization
@@ -25,6 +27,7 @@ public abstract class BaseObject : MonoBehaviour {
     {
         HP = 0;
         isRepared = false;
+        destroyParticle.StartEmitDestroyParticle();
     }
 
     public virtual void Rotate(int angle)
@@ -38,8 +41,21 @@ public abstract class BaseObject : MonoBehaviour {
         {
             HP += 10;
             repareCooldown = 1;
+            StartCoroutine("RepareTimer");
             if (HP == maxHP)
+            {
                 isRepared = true;
+                repareParticle.StopEmitParticle();
+                destroyParticle.StopEmitParticle();
+            }
+                
         }
+    }
+
+    IEnumerator RepareTimer()
+    {
+        repareParticle.StartEmitParticle();
+        yield return new WaitForSeconds(repareCooldown);
+        repareParticle.StopEmitParticle();
     }
 }
