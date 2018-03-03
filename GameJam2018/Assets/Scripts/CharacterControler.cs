@@ -99,7 +99,9 @@ public class CharacterControler : MonoBehaviour
         {
             if (direction.magnitude > 1)
                 direction.Normalize();
-            this.transform.position += direction/3;     
+            this.transform.position += direction/3;
+            float sign = (direction.z > 0) ? 1.0f : -1.0f;
+            transform.rotation = Quaternion.Euler(0,  270 - Vector3.Angle(Vector3.right, direction) * sign,0);
         }
     }
 
