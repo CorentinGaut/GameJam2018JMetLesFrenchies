@@ -42,14 +42,14 @@ public class CharacterControler : MonoBehaviour
         if (Input.GetButtonDown("RotateD"))
         {
             if (pickedUpObject == null)
-                closestObject.GetComponent<BaseObject>().Rotate(-45);
+                closestObject.GetComponent<BaseObject>().Rotate(45);
             Debug.Log("droite");
         }
 
         if (Input.GetButtonDown("RotateG"))
         {
             if(pickedUpObject == null)
-            closestObject.GetComponent<BaseObject>().Rotate(45);
+            closestObject.GetComponent<BaseObject>().Rotate(-45);
             Debug.Log("gauche");
         }
 
@@ -82,7 +82,8 @@ public class CharacterControler : MonoBehaviour
         {
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, closestObject.GetComponent<BoxCollider>().size.magnitude+1);
+            closestObject.transform.localEulerAngles = Vector3.zero;
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, closestObject.GetComponent<BoxCollider>().size.z*2f);
         }
         else if(pickedUpObject!=null)
         {
