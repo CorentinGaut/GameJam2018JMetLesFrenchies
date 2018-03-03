@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 65905800337348930}
   - component: {fileID: 65756671129628754}
   - component: {fileID: 23820434344596218}
-  - component: {fileID: 114056244879558486}
   - component: {fileID: 54059556543884448}
+  - component: {fileID: 114284233795780146}
   m_Layer: 0
   m_Name: CPU
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8baa6c1e74af0da44b6d50f76b2de89c, type: 2}
+  - {fileID: 2100000, guid: 9cc29e46b83568547b74810b99b5d8d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114056244879558486
+--- !u!114 &114284233795780146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652832156561102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a94419c205665488ec7316b5b457a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 02d1d37491aa3b44aa735ea65aee3ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0

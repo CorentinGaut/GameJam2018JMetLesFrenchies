@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65686764100006758}
   - component: {fileID: 23858715093473600}
   - component: {fileID: 54974019349389638}
-  - component: {fileID: 114604516753928582}
+  - component: {fileID: 114492197200611536}
   m_Layer: 0
   m_Name: Wire
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d05ba34c43a170a4d8990f467c445a92, type: 2}
+  - {fileID: 2100000, guid: e2126e087c09a904b88d6e3df4237719, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.45, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114604516753928582
+--- !u!114 &114492197200611536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120053172845488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f15266ca200e1242a38ee3f7af5012a, type: 3}
+  m_Script: {fileID: 11500000, guid: 32757a80d509f1c4f8c58eb99a2d5119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0

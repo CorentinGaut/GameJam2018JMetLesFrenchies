@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33421710297980314}
   - component: {fileID: 136130531016639988}
   - component: {fileID: 23296284807131820}
-  - component: {fileID: 114518034294531770}
   - component: {fileID: 54186700609469846}
   - component: {fileID: 136336194389493952}
+  - component: {fileID: 114076734843701788}
   m_Layer: 0
   m_Name: Screw
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6f9ef45ab71a20a438c2dc4be5d98dff, type: 2}
+  - {fileID: 2100000, guid: 595268e553629e446884223479b23a3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114518034294531770
+--- !u!114 &114076734843701788
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,14 +109,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543655630537704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ad8a41130de4a4da06b61d4f122978, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f7ba7cddf02b9042895c578fc1b3921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
   isRepared: 0
   maxHP: 0
   repareCooldown: 0
-  repareCollider: {fileID: 136336194389493952}
+  repareCollider: {fileID: 136130531016639988}
 --- !u!136 &136130531016639988
 CapsuleCollider:
   m_ObjectHideFlags: 1

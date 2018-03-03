@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65845706269589576}
   - component: {fileID: 23725881005509666}
   - component: {fileID: 54173576427352074}
-  - component: {fileID: 114647400405942816}
+  - component: {fileID: 114088680205520006}
   m_Layer: 0
   m_Name: Alimentation
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e66816fa53a899a4bb162066e0adab72, type: 2}
+  - {fileID: 2100000, guid: 38867b26ac9c0e8478a29f6297a492cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114647400405942816
+--- !u!114 &114088680205520006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291919198976596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4603af8df610be343bc1b14a61a1a94e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3785c64a639cc284aa7230955f5f61c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
