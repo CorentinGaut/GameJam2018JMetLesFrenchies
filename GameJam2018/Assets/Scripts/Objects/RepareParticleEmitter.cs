@@ -14,15 +14,13 @@ public class RepareParticleEmitter : MonoBehaviour {
         rsh.scale = box.size;
     }
 
-    public void StartEmitParticle(int i)
+    public void StartEmitParticle()
     {
-
                 var rem = repareParticle.emission;
                 rem.enabled = true; 
-
     }
 
-    public void StopEmitParticle(int i)
+    public void StopEmitParticle()
     {
                 var rem = repareParticle.emission;
                 rem.enabled = false; 

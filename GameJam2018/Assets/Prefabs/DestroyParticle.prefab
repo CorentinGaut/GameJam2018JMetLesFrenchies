@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4744087656332048}
   - component: {fileID: 199755611106887916}
   - component: {fileID: 198375378023111274}
-  - component: {fileID: 114868056458966108}
+  - component: {fileID: 114032181879834004}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -36,13 +36,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021493677561322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.46, y: 1.46875, z: -21.52246}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114868056458966108
+--- !u!114 &114032181879834004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,9 +50,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1021493677561322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyedParticle: {fileID: 198375378023111274}
+  box: {fileID: 0}
 --- !u!198 &198375378023111274
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -113,7 +115,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -80691759
+  randomSeed: 1345757523
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -161,7 +163,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -203,7 +205,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7205882, g: 0.88438135, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
