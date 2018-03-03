@@ -29,7 +29,7 @@ public class CharacterControler : MonoBehaviour
     {   
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
-        //anim.SetFloat("")
+
         //a pour poser
         //x pour reparer
         //gachettes pour tourner un objet
@@ -38,6 +38,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Repare"))
         {
+            Debug.Log("ALOOOOOO");
             anim.SetBool("isReparing", true);
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
