@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4622310550873342}
   - component: {fileID: 199620316579487816}
   - component: {fileID: 198739017827879480}
-  - component: {fileID: 114873377581260406}
+  - component: {fileID: 114236622524561464}
   m_Layer: 0
   m_Name: RepareParticleEmmiter
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114873377581260406
+--- !u!114 &114236622524561464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,11 +50,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1377165841572252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a8f476c538a824280bde063018e3a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 182b6927d4d46a54b87f27dfcb4e3ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   repareParticle: {fileID: 198739017827879480}
-  destroyedParticle: {fileID: 0}
   box: {fileID: 0}
 --- !u!198 &198739017827879480
 ParticleSystem:
@@ -676,7 +675,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -762,7 +761,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 30
         minScalar: 0
         maxCurve:
           serializedVersion: 2
