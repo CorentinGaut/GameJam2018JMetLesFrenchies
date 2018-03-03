@@ -1,8 +1,0 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/New Scene.unity
-=======
-- path: Assets/Scenes/testWindows.unity
->>>>>>> b0a63f4... Plein de truc cool ;)
-  isLoaded: 1
-  isActive: 1

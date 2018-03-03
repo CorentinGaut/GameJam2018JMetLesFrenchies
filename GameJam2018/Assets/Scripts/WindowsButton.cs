@@ -54,6 +54,7 @@ public class WindowsButton : MonoBehaviour {
 
         //son
         audioSource=GetComponent<AudioSource>();
+
         // Poste de Travail Initialisation
         posteTravail = this.transform.Find("PostTravail").gameObject;
         boolPosteTravail = false;
