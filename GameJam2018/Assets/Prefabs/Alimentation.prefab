@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4550882752077496}
   m_Layer: 0
-  m_Name: Alimentation 1
+  m_Name: Alimentation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 54284414492419452}
   - component: {fileID: 114238332304165692}
   m_Layer: 0
-  m_Name: HDD (2)
+  m_Name: HDD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
