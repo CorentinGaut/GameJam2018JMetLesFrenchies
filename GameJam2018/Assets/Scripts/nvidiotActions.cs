@@ -12,7 +12,9 @@ public class nvidiotActions : MonoBehaviour {
     private GameObject[] tabBlockClone;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
+        Debug.Log("Dans Start");
         buttons.SetActive(false);
         Invoke("updateBlueBar", 1);
         coordBlue = new Vector3(0, 0, 0);
@@ -27,6 +29,7 @@ public class nvidiotActions : MonoBehaviour {
 
     void updateBlueBar()
     {
+        Debug.Log("Dans UpdateBluBar");
         for (int i = 0; i < 25; i++)
         {
             var range = Random.Range(1f, timeDelay);
@@ -36,12 +39,14 @@ public class nvidiotActions : MonoBehaviour {
 
     void instentiateBlueBar()
     {
+        Debug.Log("Dans instentiateBlueBar");
         var clone = Instantiate(blueBlock, new Vector3(), new Quaternion(), this.transform.parent);
         coordBlue = clone.transform.position;
         coordBlue.x += 10 * compt;
         clone.transform.position = coordBlue;
         tabBlockClone[compt] = clone;
         compt++;
+        Debug.Log(compt);
         if (compt == 25)
         {
             endOfNvidio();
@@ -50,6 +55,7 @@ public class nvidiotActions : MonoBehaviour {
 
     void endOfNvidio()
     {
+        compt = 0;
         for (int i = 0; i < tabBlockClone.Length; i++)
         {
             Destroy(tabBlockClone[i]);
