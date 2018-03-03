@@ -8,10 +8,19 @@ public class TextScrollview : MonoBehaviour {
 
 	public UnityEngine.UI.Text prefab;
 	private int compteur;
+
+	public float repetitingTime;
+	public float decalage;
+	private bool itemToggle;
+
+	public UnityEngine.UI.Text activeItem;
 	void Start () {
 		compteur=0;
-		AddText("test");
-		AddText("test2");
+		AddText("");
+		//AddText("test2");
+		//AddText("test3");
+		activeItem=null;
+		itemToggle=true;
 	}
 	
 	// Update is called once per frame
@@ -20,22 +29,38 @@ public class TextScrollview : MonoBehaviour {
 	}
 
 	//Creer un objet text avec le text txt
-	void AddText(string txt){
-		//var clone = Instantiate(prefab,this.transform.position-this.transform.up,this.transform.rotation);
-		//var tmp = this.transform;
-		// Debug.Log(compteur);
-		// var tmp=this.GetComponent<RectTransform>() as RectTransform;
-		// var tmpPos=tmp.anchoredPosition;
-		// tmpPos.x=-954.7f;
-		// tmpPos.y=tmpPos.y-50f*compteur;
-		// compteur++;
-		// tmp.position=tmpPos;
-		// Debug.Log(tmp.position);
-		// var clone = Instantiate(prefab,tmp);
-		// var texte = clone.text;
-		// texte+=txt+"_";
-		// clone.text=texte;
-		// var tmp3=this.GetComponent<RectTransform>().anchoredPosition;
-		// tmp3.x=0;
+	void AddText(string txt){	
+		var clone=Instantiate(prefab,new Vector3(),new Quaternion(),this.transform);
+		clone.text+=txt+"_";
+		RectTransform rt = clone.GetComponent<RectTransform>();
+		rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,decalage*compteur, rt.rect.height);
+
+		//active Item
+		if(activeItem!=null){
+			activeItem.text=activeItem.text.Remove(activeItem.text.Length-1);
+			CancelInvoke();
+		}
+		//activeItem=clone;
+		var tab=this.GetComponentsInChildren<UnityEngine.UI.Text>();
+		this.activeItem=tab[tab.Length-1];
+		InvokeRepeating("toggleItem",repetitingTime,repetitingTime);
+		Debug.Log(activeItem);
+		
+		//compteur
+		compteur++;
+	}
+
+	void toggleItem(){
+		var tab=this.GetComponentsInChildren<UnityEngine.UI.Text>();
+		activeItem=tab[tab.Length-1];
+		if(itemToggle){
+			//alors on enleve
+			activeItem.text=activeItem.text.Remove(activeItem.text.Length-1);
+			itemToggle=false;
+		}else{
+			//alors on rajoute
+			activeItem.text+="_";
+			itemToggle=true;
+		}
 	}
 }
