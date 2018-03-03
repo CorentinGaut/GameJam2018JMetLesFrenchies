@@ -17,6 +17,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolGoogle;
     private GameObject google2;
     private bool boolGoogle2;
+    private GameObject posteTravail;
+    private bool boolPosteTravail;
 
 //Son
     private AudioSource audioSource;
@@ -26,7 +28,8 @@ public class WindowsButton : MonoBehaviour {
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
-                                        functionFermer, functionPrecedent}; // fonction de google2
+                                        functionFermer, functionPrecedent,// fonction de google2
+                                        functionFermer}; // fonction de poste travail
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -49,8 +52,15 @@ public class WindowsButton : MonoBehaviour {
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
 
+<<<<<<< HEAD
         //son
         audioSource=GetComponent<AudioSource>();
+=======
+        // Poste de Travail Initialisation
+        posteTravail = this.transform.Find("PostTravail").gameObject;
+        boolPosteTravail = false;
+        posteTravail.SetActive(boolPosteTravail);
+>>>>>>> 95da5c6... Poste de travail
     }
 	
 	// Update is called once per frame
@@ -76,6 +86,12 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonPosteTravail()
     {
         Debug.Log("Test bouton Poste de Travail reussi !");
+        if (!boolPosteTravail)
+        {
+            boolPosteTravail = true;
+            posteTravail.SetActive(boolPosteTravail);
+            boolPosteTravail = false;
+        }
     }
 
     void functionButtonInternet()
