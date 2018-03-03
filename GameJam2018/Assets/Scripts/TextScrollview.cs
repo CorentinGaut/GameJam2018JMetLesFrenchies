@@ -21,6 +21,10 @@ public class TextScrollview : MonoBehaviour {
 		//AddText("test3");
 		activeItem=null;
 		itemToggle=true;
+		var tmp= (RectTransform)this.transform.parent;
+		var tmpPos=tmp.position;
+		tmpPos.y=0;
+		this.transform.parent.position=tmpPos;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +33,7 @@ public class TextScrollview : MonoBehaviour {
 	}
 
 	//Creer un objet text avec le text txt
-	void AddText(string txt){	
+	public void AddText(string txt){	
 		var clone=Instantiate(prefab,new Vector3(),new Quaternion(),this.transform);
 		clone.text+=txt+"_";
 		RectTransform rt = clone.GetComponent<RectTransform>();
