@@ -25,6 +25,8 @@ public class CharacterControler : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
 
+        Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             closestObject.GetComponent<BaseObject>().Repare();

@@ -8,7 +8,7 @@ public abstract class BaseObject : MonoBehaviour {
     public bool isRepared;
     public int maxHP;
     public float repareCooldown;
-    public BoxCollider repareBox;
+    public Collider repareCollider;
 
 
 	// Use this for initialization
