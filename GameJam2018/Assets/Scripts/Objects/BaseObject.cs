@@ -10,6 +10,8 @@ public abstract class BaseObject : MonoBehaviour {
     public float repareCooldown;
     public Collider repareCollider;
     public float baseHeight;
+    public RepareParticleEmitter repareParticle;
+    public DestroyParticleEmitter destroyParticle;
 
 
 	// Use this for initialization
