@@ -23,7 +23,7 @@ public class WindowsButton : MonoBehaviour {
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
-                                        functionFermer}; // fonction de google2
+                                        functionFermer, functionPrecedent}; // fonction de google2
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -74,24 +74,38 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonInternet()
     {
         Debug.Log("Test bouton internet réussi !");
-        if (!boolDemarrer)
+        if (!boolGoogle)
         {
-            boolDemarrer = true;
-            google.SetActive(boolDemarrer);
+            boolGoogle = true;
+            google.SetActive(boolGoogle);
         }
         
     }
 
     void functionFermer()
     {
-        boolDemarrer = false;
-        google.SetActive(boolGoogle);
+        Debug.Log("Ne doit rien faire (Fermer)");
+    }
+
+    void functionPrecedent()
+    {
+        Debug.Log("Ne doit rien faire (Retour)");
     }
 
     void functionButtonChance()
     {
-        boolGoogle2 = true;
-        google2.SetActive(boolGoogle2);
+        if (!boolGoogle2) // Ouvre nouvelle page google2
+        {
+            boolGoogle2 = true;
+            google2.SetActive(boolGoogle2);
+            boolGoogle2 = false;
+            if (boolGoogle) // Ferme l'ancienne page (google1)
+            {
+                boolGoogle = false;
+                google.SetActive(boolGoogle);
+                boolGoogle = true;
+            }
+        }
     }
 
     void functionButtonRecherche()
