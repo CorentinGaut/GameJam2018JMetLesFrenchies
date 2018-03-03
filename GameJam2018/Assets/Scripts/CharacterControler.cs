@@ -20,6 +20,8 @@ public class CharacterControler : MonoBehaviour
     public float dureeRalentissement;
     public bool isStuned;
 
+    private TextScrollview contenu;
+
     // Use this for initialization
     void Start()
     {
@@ -28,6 +30,7 @@ public class CharacterControler : MonoBehaviour
         minDistObject = 3000;
         isStuned=false;
         tweakRalentissement=1f;
+        contenu=GameObject.Find("Content").GetComponent<TextScrollview>();
     }
 
     // Update is called once per frame
@@ -154,6 +157,7 @@ public class CharacterControler : MonoBehaviour
 
     public void ralentir(){
         tweakRalentissement=vitesseRalenti;
+        contenu.AddText("Ie utilise trop de processeur, ralentissement de l'ordinateur !");
         StartCoroutine(finRalentissement());    
     }
 
