@@ -13,21 +13,19 @@ public class WindowsButton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonIcon, functionButtonInternet, functionButtonDiablo };
-
-        colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
-        boolDemarrer = false;
-        colomneDemarrer.SetActive(boolDemarrer);
+        UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
+                                        functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs}; // fonction de demarrer
 
         listButtons = this.GetComponentsInChildren<Button>();
-
-        Debug.Log("avant l'init des boutons");
-        Debug.Log(listButtons.Length);
         for (int i = 0; i < listButtons.Length; i++)
         {
             listButtons[i].onClick.AddListener(tabFonctions[i]);
         }
+        Debug.Log(listButtons.Length);
 
+        colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
+        boolDemarrer = false;
+        colomneDemarrer.SetActive(boolDemarrer);
     }
 	
 	// Update is called once per frame
@@ -50,9 +48,9 @@ public class WindowsButton : MonoBehaviour {
         }
     }
 
-    void functionButtonIcon()
+    void functionButtonPosteTravail()
     {
-        Debug.Log("Test bouton icon reussi !");
+        Debug.Log("Test bouton Poste de Travail reussi !");
     }
 
     void functionButtonInternet()
@@ -63,5 +61,15 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonDiablo()
     {
         Debug.Log("Test bouton diablo reussi !");
+    }
+
+    void functionButtonInvCommande()
+    {
+        Debug.Log("Test bouton Invite de commande reussi !");
+    }
+
+    void functionButtonTousProgs()
+    {
+        Debug.Log("Test bouton Tous les progs reussi !");
     }
 }
