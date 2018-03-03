@@ -13,6 +13,7 @@ public class WindowsButton : MonoBehaviour {
     public GameObject[] listPopUps;
     private int comptPopUp;
     public float timePopUp;
+    public GameObject panelFlou;
     private GameObject google;
     private bool boolGoogle;
     private GameObject google2;
@@ -21,8 +22,10 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPosteTravail;
     private GameObject diablo;
     private bool boolDiablo;
+    private GameObject diabloWarning;
+    private bool boolDiabloWarning;
 
-//Son
+    //Son
     private AudioSource audioSource;
 
     // Use this for initialization
@@ -32,7 +35,8 @@ public class WindowsButton : MonoBehaviour {
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
                                         functionFermer, // fonction de poste travail
-                                        functionFermer}; // fonction de diablo
+                                        functionFermer, functionButtonPlayDiablo, // fonction de diablo
+                                        functionFermer}; // fonction de diablo Warning
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -41,6 +45,8 @@ public class WindowsButton : MonoBehaviour {
             listButtons[i].onClick.AddListener(playClick);
         }
         Debug.Log(listButtons.Length);
+
+        panelFlou.SetActive(false);
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -68,6 +74,10 @@ public class WindowsButton : MonoBehaviour {
         boolDiablo = false;
         diablo.SetActive(boolDiablo);
 
+        // Diablo Warning Initialisation
+        diabloWarning = this.transform.Find("Warning").gameObject;
+        boolDiabloWarning = false;
+        diabloWarning.SetActive(boolDiabloWarning);
     }
 	
 	// Update is called once per frame
@@ -192,6 +202,28 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonTousProgs()
     {
         Debug.Log("Test bouton Tous les progs reussi !");
+    }
+
+    void functionButtonPlayDiablo()
+    {
+        Debug.Log("Test bouton Tous les progs reussi !");
+        if (!boolDiabloWarning) // Afficher Demarrer
+        {
+            boolDiabloWarning = true;
+            diabloWarning.SetActive(boolDiabloWarning);
+            boolDiabloWarning = false;
+            StartCoroutine(flou());
+        }
+    }
+
+    IEnumerator flou()
+    {
+        panelFlou.SetActive(true);
+        print(Time.time);
+        yield return new WaitForSeconds(5);
+        print(Time.time);
+        panelFlou.SetActive(false);
+
     }
 
     void playClick(){
