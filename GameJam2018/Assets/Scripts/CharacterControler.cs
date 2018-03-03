@@ -118,4 +118,9 @@ public class CharacterControler : MonoBehaviour
             closestObject = null;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Alimentation : BaseObject {
 
-
     // Use this for initialization
     void Start()
     {
@@ -32,5 +31,24 @@ public class Alimentation : BaseObject {
     public override void Repare()
     {
         base.Repare();
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "AlimentationEmplacement")
+        {
+            Debug.Log("Alim est qu bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("Alim est qu bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet"); 
+                base.Repare(); 
+            }
+            
+        }
     }
 }
