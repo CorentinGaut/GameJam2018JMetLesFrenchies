@@ -34,3 +34,12 @@ sysinfo.txt
 *.apk
 *.unitypackage
 GameJam2018/.vs/GameJam2018/v15/sqlite3/storage.ide
+GameJam2018/.vs/
+GameJam2018/.vscode/
+<<<<<<< HEAD
+=======
+GameJam2018/.vscode/settings.json
+>>>>>>> 8c65275... Creation des script pour le bouton
+=======
+GameJam2018/.vscode/
+>>>>>>> 64d7e58... Maj gitingore

@@ -1,8 +1,0 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/TestPlayer.unity
-=======
-- path: Assets/Scenes/New Scene.unity
->>>>>>> 1a9fc7711355808e37e253aeebdcdd65165c585a
-  isLoaded: 1
-  isActive: 1
