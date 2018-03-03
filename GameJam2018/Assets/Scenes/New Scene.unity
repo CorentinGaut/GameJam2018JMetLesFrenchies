@@ -1922,7 +1922,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 565090620}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99994904
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2473,6 +2473,26 @@ Prefab:
     - target: {fileID: 4624345778514322, guid: 8ee0de206228ea748a65500c5e519be4, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114310559441229832, guid: 8ee0de206228ea748a65500c5e519be4,
+        type: 2}
+      propertyPath: stunTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114310559441229832, guid: 8ee0de206228ea748a65500c5e519be4,
+        type: 2}
+      propertyPath: tweakRalentissement
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114310559441229832, guid: 8ee0de206228ea748a65500c5e519be4,
+        type: 2}
+      propertyPath: vitesseRalenti
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114310559441229832, guid: 8ee0de206228ea748a65500c5e519be4,
+        type: 2}
+      propertyPath: dureeRalentissement
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ee0de206228ea748a65500c5e519be4, type: 2}
@@ -6493,7 +6513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00011002854}
+  m_AnchoredPosition: {x: 0, y: 0.000008003768}
   m_SizeDelta: {x: 0, y: 358.07}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1752198261

@@ -13,19 +13,39 @@ public class CharacterControler : MonoBehaviour
     GameObject pickedUpObject;
     Vector3 pickedUpItemPos;
 
+    [Header("Sort")]
+    public float stunTime;
+    private float tweakRalentissement;
+    public float vitesseRalenti;
+    public float dureeRalentissement;
+    public bool isStuned;
+
     // Use this for initialization
     void Start()
     {
         closeObjects = new List<GameObject>();
         direction = new Vector3(0,0,0);
         minDistObject = 3000;
+        isStuned=false;
+        tweakRalentissement=1f;
     }
 
     // Update is called once per frame
     void Update()
     {   
+        if(!isStuned){
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
+        }else{
+            direction.x=0f;
+            direction.y=0f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.K)){
+            //debug
+            ralentir();
+        }
+        
 
         //a pour poser
         //x pour reparer
@@ -99,7 +119,7 @@ public class CharacterControler : MonoBehaviour
         {
             if (direction.magnitude > 1)
                 direction.Normalize();
-            this.transform.position += direction/3;
+            this.transform.position += direction/3* tweakRalentissement;
             float sign = (direction.z > 0) ? 1.0f : -1.0f;
             transform.rotation = Quaternion.Euler(0,  270 - Vector3.Angle(Vector3.right, direction) * sign,0);
         }
@@ -117,5 +137,28 @@ public class CharacterControler : MonoBehaviour
         {
             closestObject = null;
         }
+    }
+
+    IEnumerator FinStun(){
+        yield return new WaitForSeconds(stunTime);
+        isStuned=false;
+        Debug.Log("finStun");
+    }
+
+    void Stun(){
+        isStuned=true;
+        direction.x=0;
+        direction.y=0;
+        StartCoroutine(FinStun());
+    }
+
+    void ralentir(){
+        tweakRalentissement=vitesseRalenti;
+        StartCoroutine(finRalentissement());    
+    }
+
+    IEnumerator finRalentissement(){
+        yield return new WaitForSeconds(dureeRalentissement);
+        tweakRalentissement=1f;
     }
 }
