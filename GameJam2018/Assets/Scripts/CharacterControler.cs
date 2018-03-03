@@ -6,22 +6,20 @@ public class CharacterControler : MonoBehaviour
 {
 
     Vector3 direction;
-    public List<GameObject> closeObjects;
-    public GameObject closestObject;
+    List<GameObject> closeObjects;
+    GameObject closestObject;
     Vector3 pos;
     float minDistObject;
     GameObject pickedUpObject;
     Vector3 pickedUpItemPos;
-    public Animator anim;
-    public AnimatorControllerParameter para;
-
+    Animator anim;
     // Use this for initialization
     void Start()
     {
+        anim = GetComponent<Animator>();
         closeObjects = new List<GameObject>();
         direction = new Vector3(0,0,0);
         minDistObject = 3000;
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,20 +27,26 @@ public class CharacterControler : MonoBehaviour
     {   
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
-        anim.SetBool("isReparing", false);
+        
         //a pour poser
         //x pour reparer
         //gachettes pour tourner un objet
-        //anim.SetBool("isReparing", false);
-        Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetButtonDown("Repare"))
+        Camera.main.transform.position = gameObject.transform.position + new Vector3(7, 10, -10);
+
+        if (Input.GetButton("Repare"))
         {
-            Debug.Log("ALOOOOOO");
             anim.SetBool("isReparing", true);
+            StartCoroutine(WaitAnim());
             closestObject.GetComponent<BaseObject>().Repare();
-            Debug.Log("ENFONCE LA");
         }
+
+       /* if (Input.GetButtonUp("Repare"))
+        {
+            Debug.Log("ENFONCE LA");
+            anim.SetBool("isReparing", false);
+        }*/
+
 
         if (Input.GetButtonDown("RotateD"))
         {
@@ -81,17 +85,25 @@ public class CharacterControler : MonoBehaviour
         }
     }
 
+    IEnumerator WaitAnim()
+    {
+        yield return new WaitForSeconds(1.2f);
+        anim.SetBool("isReparing", false);
+    }
+
     private void PickUp()
     {
         if(closestObject!=null&& pickedUpObject==null)
         {
+            anim.SetBool("isWearing", true);
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, /*-((closestObject.transform.localScale.z/2f)+1)*/-((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, -((closestObject.transform.localScale.z/2f)+1));
         }
         else if(pickedUpObject!=null)
         {
+            anim.SetBool("isWearing", false);
             pickedUpObject.transform.SetParent(null);
             pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.GetComponent<BaseObject>().baseHeight, pickedUpObject.transform.position.z);
             pickedUpObject = null;
@@ -107,12 +119,14 @@ public class CharacterControler : MonoBehaviour
                 direction.Normalize();
             this.transform.position += direction/3;
             float sign = (direction.z > 0) ? 1.0f : -1.0f;
-            transform.rotation = Quaternion.Euler(0,  90 - Vector3.Angle(Vector3.right, direction) * (sign),0);
+            transform.rotation = Quaternion.Euler(0,  90 - Vector3.Angle(Vector3.right, direction) * sign,0);
         }
+
         if (direction.magnitude == 0)
         {
             anim.SetBool("isMoving", false);
-        }             
+        }
+       // 
     }
 
     private void OnTriggerEnter(Collider other)
