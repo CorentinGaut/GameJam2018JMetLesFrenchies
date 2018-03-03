@@ -10,8 +10,9 @@ public class DestroyParticleEmitter : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        box = transform.parent.GetComponent<BoxCollider>();
         var dsh = destroyedParticle.shape;
-        dsh.scale = box.size;
+        dsh.scale = new Vector3(box.size.x,box.size.z,box.size.y);
         if (!GetComponentInParent<BaseObject>().isRepared)
         {
             var dem = destroyedParticle.emission;
@@ -21,16 +22,12 @@ public class DestroyParticleEmitter : MonoBehaviour {
 
     public void StartEmitDestroyParticle()
     {
-
                 var dem = destroyedParticle.emission;
-                dem.enabled = true; 
-        
+                dem.enabled = true;        
     }
 
     public void StopEmitParticle()
     {
-
                 var dem = destroyedParticle.emission;
-
     }
 }
