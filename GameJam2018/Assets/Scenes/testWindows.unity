@@ -315,7 +315,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 117800100}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: f9b86a52a2ea01c438c7249f79141f10, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: b57e7a295f2df844ebdba97b8e1cc0f1, type: 3}
+>>>>>>> 96dbeae... merge
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &134160113
@@ -504,8 +508,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 934140385}
   m_HandleRect: {fileID: 934140384}
   m_Direction: 2
+<<<<<<< HEAD
   m_Value: 0
   m_Size: 0.99953717
+=======
+  m_Value: 1
+  m_Size: 1
+>>>>>>> 96dbeae... merge
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2316,6 +2325,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1859829007}
+  - component: {fileID: 1859829008}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2339,9 +2349,25 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: -0.000034006138}
+=======
+  m_AnchoredPosition: {x: 0, y: 0.000015154945}
+>>>>>>> 96dbeae... merge
   m_SizeDelta: {x: 0, y: 358.07}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1859829008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1859829006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae07f5465bb2b324089e25db9109da39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 114012605072489848, guid: 5c17e1e3a81db964b9bcf620d7af766b, type: 2}
 --- !u!1001 &1900994943
 Prefab:
   m_ObjectHideFlags: 0
@@ -2397,7 +2423,7 @@ Prefab:
     - target: {fileID: 224932541681657082, guid: 5c17e1e3a81db964b9bcf620d7af766b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 158.5
+      value: 156
       objectReference: {fileID: 0}
     - target: {fileID: 224932541681657082, guid: 5c17e1e3a81db964b9bcf620d7af766b,
         type: 2}
@@ -2439,10 +2465,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114012605072489848, guid: 5c17e1e3a81db964b9bcf620d7af766b,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 14
+    - target: {fileID: 1050354283813116, guid: 5c17e1e3a81db964b9bcf620d7af766b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c17e1e3a81db964b9bcf620d7af766b, type: 2}
