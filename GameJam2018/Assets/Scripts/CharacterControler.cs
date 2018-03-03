@@ -12,7 +12,8 @@ public class CharacterControler : MonoBehaviour
     float minDistObject;
     GameObject pickedUpObject;
     Vector3 pickedUpItemPos;
-    Animator anim;
+    public Animator anim;
+    public AnimatorControllerParameter para;
 
     // Use this for initialization
     void Start()
@@ -37,6 +38,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Repare"))
         {
+            anim.SetBool("isReparing", true);
             closestObject.GetComponent<BaseObject>().Repare();
             Debug.Log("ENFONCE LA");
         }
@@ -99,13 +101,17 @@ public class CharacterControler : MonoBehaviour
     {
         if (direction.magnitude > 0.1)
         {
-            
+            anim.SetBool("isMoving", true);
             if (direction.magnitude > 1)
                 direction.Normalize();
             this.transform.position += direction/3;
             float sign = (direction.z > 0) ? 1.0f : -1.0f;
-            transform.rotation = Quaternion.Euler(0,  270 - Vector3.Angle(Vector3.right, direction) * sign,0);
+            transform.rotation = Quaternion.Euler(0,  90 - Vector3.Angle(Vector3.right, direction) * (sign),0);
         }
+        if (direction.magnitude == 0)
+        {
+            anim.SetBool("isMoving", false);
+        }             
     }
 
     private void OnTriggerEnter(Collider other)
