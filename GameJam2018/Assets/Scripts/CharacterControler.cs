@@ -41,11 +41,6 @@ public class CharacterControler : MonoBehaviour
             closestObject.GetComponent<BaseObject>().Repare();
         }
 
-       /* if (Input.GetButtonUp("Repare"))
-        {
-            Debug.Log("ENFONCE LA");
-            anim.SetBool("isReparing", false);
-        }*/
 
 
         if (Input.GetButtonDown("RotateD"))
