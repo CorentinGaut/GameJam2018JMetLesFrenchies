@@ -293,7 +293,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -68.5, y: -266}
+=======
+  m_AnchoredPosition: {x: -168, y: 16}
+>>>>>>> 3e0a7d9... Creation du debut d UI
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615186147
