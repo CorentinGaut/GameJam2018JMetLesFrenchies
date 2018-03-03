@@ -1921,8 +1921,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 565090621}
   m_HandleRect: {fileID: 565090620}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.5467176
+  m_Value: 0.9999998
+  m_Size: 0.5467175
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4616,9 +4616,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listPopUps:
-  - {fileID: 1057208662940228, guid: b44470b1829915d46a0e418c2e934a71, type: 2}
-  - {fileID: 1685042141456656, guid: 2a434f26967d311479118a8574bc1513, type: 2}
-  - {fileID: 1406318954606656, guid: d1b8bf84b4bdf3241a32459b6b6dc76a, type: 2}
+  - {fileID: 1057208662940228, guid: 78b38f9682f822c44b02126f39df80df, type: 2}
+  - {fileID: 1685042141456656, guid: 57e416d478d81d4468891f7dd0d59b57, type: 2}
+  - {fileID: 1406318954606656, guid: 799d50d808f3f2c4a8af017bb551af9a, type: 2}
   timePopUp: 0.3
 --- !u!224 &1172426622
 RectTransform:
@@ -6527,7 +6527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae07f5465bb2b324089e25db9109da39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 114012605072489848, guid: 5c17e1e3a81db964b9bcf620d7af766b, type: 2}
+  prefab: {fileID: 114012605072489848, guid: eda69d4eb55b0a446ab0f0bf623b7ba4, type: 2}
   repetitingTime: 1
   decalage: 35
   activeItem: {fileID: 0}
