@@ -27,8 +27,7 @@ public class nvidiotActions : MonoBehaviour {
 
     void updateBlueBar()
     {
-        for (int i = 0; i < 25; i++)
-        {
+        for (int i = 0; i < 25; i++){
             var range = Random.Range(1f, timeDelay);
             Invoke("instentiateBlueBar", range);
         }
