@@ -32,4 +32,24 @@ public class Port : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "PortEmplacement")
+        {
+            Debug.Log("Port est au bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("Port est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }

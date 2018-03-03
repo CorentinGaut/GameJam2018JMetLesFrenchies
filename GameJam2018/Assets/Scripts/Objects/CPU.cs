@@ -32,4 +32,24 @@ public class CPU : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "CPUEmplacement")
+        {
+            Debug.Log("CPU est au bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("CPU est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }

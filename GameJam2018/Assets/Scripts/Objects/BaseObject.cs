@@ -9,6 +9,7 @@ public abstract class BaseObject : MonoBehaviour {
     public int maxHP;
     public float repareCooldown;
     public Collider repareCollider;
+    public Collider endroitCollider; 
     public float baseHeight;
     public RepareParticleEmitter repareParticle;
     public DestroyParticleEmitter destroyParticle;

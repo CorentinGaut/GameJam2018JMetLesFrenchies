@@ -32,4 +32,24 @@ public class HDD : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "HDDEmplacement")
+        {
+            Debug.Log("HDD est au bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("HDD est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }
