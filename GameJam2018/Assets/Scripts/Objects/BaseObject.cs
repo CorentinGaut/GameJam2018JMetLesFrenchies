@@ -9,11 +9,11 @@ public abstract class BaseObject : MonoBehaviour {
     public int maxHP;
     public float repareCooldown;
     public Collider repareCollider;
+    public float baseHeight;
 
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

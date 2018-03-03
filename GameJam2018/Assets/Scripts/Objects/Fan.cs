@@ -8,6 +8,8 @@ public class Fan : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 200;
         maxHP = 200;
         isRepared = true;

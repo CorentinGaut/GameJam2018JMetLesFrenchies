@@ -6,7 +6,10 @@ public class CPU : BaseObject {
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 250;
         maxHP = 250;
         isRepared = false;

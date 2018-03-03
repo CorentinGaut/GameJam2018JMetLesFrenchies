@@ -8,6 +8,8 @@ public class Alimentation : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 400;
         maxHP = 400;
         isRepared = true;

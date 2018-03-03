@@ -11,6 +11,7 @@ public class CharacterControler : MonoBehaviour
     Vector3 pos;
     float minDistObject;
     GameObject pickedUpObject;
+    Vector3 pickedUpItemPos;
 
     // Use this for initialization
     void Start()
@@ -37,12 +38,14 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            closestObject.GetComponent<BaseObject>().Rotate(-45);
+            if (pickedUpObject == null)
+                closestObject.GetComponent<BaseObject>().Rotate(-45);
             Debug.Log("droite");
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if(pickedUpObject == null)
             closestObject.GetComponent<BaseObject>().Rotate(45);
             Debug.Log("gauche");
         }
@@ -51,7 +54,6 @@ public class CharacterControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             PickUp();
-            Debug.Log("gauche");
         }
 
         pos = gameObject.transform.position;
@@ -76,15 +78,13 @@ public class CharacterControler : MonoBehaviour
         if(closestObject!=null&& pickedUpObject==null)
         {
             pickedUpObject = closestObject;
-            closestObject.transform.position += Vector3.up;
             closestObject.transform.SetParent(gameObject.transform);
-            closestObject.transform.localPosition = new Vector3(0, closestObject.GetComponent<BoxCollider>().size.y, closestObject.GetComponent<BoxCollider>().size.magnitude+1);
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, closestObject.GetComponent<BoxCollider>().size.magnitude+1);
         }
         else if(pickedUpObject!=null)
         {
-            pickedUpObject.transform.position -= Vector3.up;
             pickedUpObject.transform.SetParent(null);
-            pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.GetComponent<BoxCollider>().size.y/2, pickedUpObject.transform.position.z);
+            pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.GetComponent<BaseObject>().baseHeight, pickedUpObject.transform.position.z);
             pickedUpObject = null;
         }
     }

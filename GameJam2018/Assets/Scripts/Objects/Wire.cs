@@ -8,6 +8,8 @@ public class Wire : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 50;
         maxHP = 50;
         isRepared = true;

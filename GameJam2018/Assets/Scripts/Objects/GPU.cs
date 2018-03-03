@@ -7,6 +7,8 @@ public class GPU : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 350;
         maxHP = 350;
         isRepared = true;

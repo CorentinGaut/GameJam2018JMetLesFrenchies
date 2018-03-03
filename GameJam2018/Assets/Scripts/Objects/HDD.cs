@@ -7,6 +7,8 @@ public class HDD : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 500;
         maxHP = 500;
         isRepared = true;

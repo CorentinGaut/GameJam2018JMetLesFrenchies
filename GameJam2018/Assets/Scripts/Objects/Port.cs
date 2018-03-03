@@ -8,6 +8,8 @@ public class Port : BaseObject {
     // Use this for initialization
     void Start()
     {
+        baseHeight = gameObject.transform.position.y;
+
         HP = 100;
         maxHP = 100;
         isRepared = true;
