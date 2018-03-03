@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindowsButtons : MonoBehaviour {
-
-    private ArrayList buttonsList;
+public class WindowsButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Array des bouton children
-        
+		
 	}
 	
 	// Update is called once per frame
