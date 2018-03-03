@@ -12,7 +12,9 @@ public class nvidiotActions : MonoBehaviour {
     private UnityEngine.UI.Image[] tabBlockClone;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
+        Debug.Log("Dans Start");
         buttons.SetActive(false);
         Invoke("updateBlueBar", 1);
         coordBlue = new Vector3(0, 0, 0);
@@ -30,7 +32,9 @@ public class nvidiotActions : MonoBehaviour {
 
     void updateBlueBar()
     {
-        for (int i = 0; i < 25; i++){
+        Debug.Log("Dans UpdateBluBar");
+        for (int i = 0; i < 25; i++)
+        {
             var range = Random.Range(1f, timeDelay);
             Invoke("instentiateBlueBar", range);
         }
@@ -53,6 +57,7 @@ public class nvidiotActions : MonoBehaviour {
 
     void endOfNvidio()
     {
+        compt = 0;
         for (int i = 0; i < tabBlockClone.Length; i++)
         {
             Destroy(tabBlockClone[i]);
