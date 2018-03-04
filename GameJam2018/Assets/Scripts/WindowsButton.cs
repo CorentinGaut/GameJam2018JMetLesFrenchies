@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class WindowsButton : MonoBehaviour {
 
@@ -28,24 +30,50 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPhotoWindow;
     private GameObject beauMec;
     private bool boolBeauMec;
+    private GameObject cmdPrompt;
+    private bool boolCmdPrompt;
+ 
+    private GameObject victoryPop;
+    private bool boolVictoryPop;
+    private GameObject forceUpdate;
+    private bool boolForceUpdate;
+
+    public bool conditionVictoire;
+
     public float coolDownPng;
     private bool allowClickPhoto;
+    private GameObject virus1, virus2, virus3, virus4, virus5, virus6;
+    private bool boolPart; 
+
+    
+
+    private bool ralentir1, ralentir2, ralentir3;
+
+    // Player
+    private CharacterControler player;
 
     //Son
-    private AudioSource audioSource;
+    private AudioSource audioSource , audioBoot ,audioError;
+
+    private TextScrollview contenuScroll;
 
     // Use this for initialization
     void Start () {
+
+
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
-                                        functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
+                                        functionBoutonShutdown,functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
                                         functionFermer, functionButtonPhotoLouche, // fonction de poste travail
                                         functionFermer, functionButtonPlayDiablo, // fonction de diablo
                                         functionFermer, // fonction de diablo Warning
                                         functionFermer, functionPrecedent, functionButtonBeauMec, // fonction de PhotoWindow
-                                        functionFermer}; // fonction de BeauMec
-
+                                        functionFermer, // fonction de BeauMec
+                                        functionFermer, // FN de command Prompt
+                                        functionButtonAcceptUpdate, functionButtonRefuseUpdate, // fonction de VictoryPopUp
+                                        functionButtonAcceptUpdate}; // fonction de ForceUpdate
+                                        
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
         {
@@ -57,6 +85,13 @@ public class WindowsButton : MonoBehaviour {
         panelFlou.SetActive(false);
 
         allowClickPhoto = true;
+        ralentir1 = true;
+        ralentir2 = true;
+        ralentir3 = true;
+
+        player = GameObject.Find("Player").GetComponent<CharacterControler>();
+
+        contenuScroll = GameObject.Find("Content").GetComponent<TextScrollview>();
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -71,8 +106,13 @@ public class WindowsButton : MonoBehaviour {
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
 
-        //son
-        audioSource=GetComponent<AudioSource>();
+        //sons
+        audioSource=GetComponents<AudioSource>()[0];
+        audioBoot = GetComponents<AudioSource>()[1];
+        audioError = GetComponents<AudioSource>()[2];
+        audioBoot.Play();
+
+
 
         // Poste de Travail Initialisation
         posteTravail = this.transform.Find("PostTravail").gameObject;
@@ -94,15 +134,48 @@ public class WindowsButton : MonoBehaviour {
         boolPhotoWindow = false;
         photoWindow.SetActive(boolPhotoWindow);
 
+        cmdPrompt = this.transform.Find("commandPrompt").gameObject;
+        boolCmdPrompt = false;
+        cmdPrompt.SetActive(boolCmdPrompt);
+
         // BeauMec.png Initialisation
         beauMec = this.transform.Find("BeauMec").gameObject;
         boolBeauMec = false;
         beauMec.SetActive(boolBeauMec);
+
+        
+        // VictoryPopUp Initialisation
+        victoryPop = this.transform.Find("VictoryPopUp").gameObject;
+        boolVictoryPop = false;
+        victoryPop.SetActive(boolVictoryPop);
+
+        // ForceUpdate Initialisation
+        forceUpdate = this.transform.Find("ForceUpdate").gameObject;
+        boolForceUpdate = false;
+        forceUpdate.SetActive(boolForceUpdate);
+        
+        // Desactiver virus dans la scene 
+        virus1 = GameObject.Find("ParticulePoussiere1");
+        virus2 = GameObject.Find("ParticulePoussiere2");
+        virus3 = GameObject.Find("ParticulePoussiere3");
+        virus4 = GameObject.Find("ParticulePoussiere4");
+        virus5 = GameObject.Find("ParticulePoussiere5");
+        virus6 = GameObject.Find("ParticulePoussiere6");
+        boolPart = false;
+        virus1.SetActive(boolPart);
+        virus2.SetActive(boolPart);
+        virus3.SetActive(boolPart);
+        virus4.SetActive(boolPart);
+        virus5.SetActive(boolPart);
+        virus6.SetActive(boolPart);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (conditionVictoire)
+        {
+            functionVictoire(); // Affiche PopUp Update Fenetre10
+        }
 	}
 
     void functionButtonDemarrer()
@@ -154,6 +227,8 @@ public class WindowsButton : MonoBehaviour {
             beauMec.SetActive(boolBeauMec);
             boolBeauMec = false;
             // Liver le jeu pour stun l'anti virus
+            player.Stun();
+            contenuScroll.AddText("Ce fichier est corrompu. Analyse de l'anti-virus");
             StartCoroutine(coolDown());
         }
     }
@@ -172,7 +247,11 @@ public class WindowsButton : MonoBehaviour {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        if (ralentir1)
+        {
+            player.ralentir();
+            ralentir1 = false;
+        }
     }
 
     void functionFermer()
@@ -199,7 +278,11 @@ public class WindowsButton : MonoBehaviour {
                 boolGoogle = true;
             }
         }
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        if (ralentir2)
+        {
+            player.ralentir();
+            ralentir2 = false;
+        }
     }
 
     void functionButtonRecherche()
@@ -209,11 +292,17 @@ public class WindowsButton : MonoBehaviour {
         Invoke("pupUps", timePopUp);
         Invoke("pupUps", timePopUp * 2);
         comptPopUp = 0;
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        if (ralentir3)
+        {
+            player.ralentir();
+            ralentir3 = false;
+        }
     }
 
     void pupUps()
     {
+        //son ici
+        audioError.Play();
         Instantiate(listPopUps[comptPopUp], this.transform);
         comptPopUp++;
     }
@@ -241,7 +330,18 @@ public class WindowsButton : MonoBehaviour {
         {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
+        
+            boolPart = true;
+            virus1.SetActive(boolPart);
+            virus2.SetActive(boolPart);
+            virus3.SetActive(boolPart);
+            virus4.SetActive(boolPart);
+            virus5.SetActive(boolPart);
+            virus6.SetActive(boolPart);
+
         }
+        boolCmdPrompt = true;
+        cmdPrompt.SetActive(cmdPrompt);
     }
 
     void functionButtonTousProgs()
@@ -258,17 +358,64 @@ public class WindowsButton : MonoBehaviour {
             boolDiabloWarning = true;
             diabloWarning.SetActive(boolDiabloWarning);
             boolDiabloWarning = false;
-            StartCoroutine(flou());
+            GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
+            contenuScroll.AddText("La carte graphique n'est plus détectée.");
+            // StartCoroutine(flou());
         }
+    }
+
+    void functionVictoire()
+    {
+        listButtons = this.GetComponentsInChildren<Button>();
+        for (int i = 0; i < listButtons.Length; i++)
+        {
+            if(listButtons[i].name != "Accepter" && listButtons[i].name != "Cancel" && listButtons[i].name != "OK")
+            {
+                listButtons[i].enabled = false;
+            }
+        }
+        var index = victoryPop.transform.GetSiblingIndex();
+        victoryPop.transform.SetSiblingIndex(index+4);
+        if (!boolVictoryPop)
+        {
+            boolVictoryPop = true;
+            victoryPop.SetActive(boolVictoryPop);
+            boolVictoryPop = false;
+            conditionVictoire = false;
+        }
+    }
+
+    void functionButtonAcceptUpdate()
+    {
+        SceneManager.LoadScene("menu2");
+    }
+
+    void functionButtonRefuseUpdate()
+    {
+        var index = forceUpdate.transform.GetSiblingIndex();
+        forceUpdate.transform.SetSiblingIndex(index + 4);
+        if (!boolForceUpdate)
+        {
+            boolVictoryPop = false;
+            victoryPop.SetActive(boolVictoryPop);
+            boolForceUpdate = true;
+            forceUpdate.SetActive(boolForceUpdate);
+            boolForceUpdate = false;
+        }
+    }
+
+    void functionBoutonShutdown() {
+        Debug.Log("SHUTDOWN");
+       Application.Quit();
     }
 
     IEnumerator flou()
     {
-        //panelFlou.SetActive(true);
+        panelFlou.SetActive(true);
         print(Time.time);
         yield return new WaitForSeconds(5);
         print(Time.time);
-        //panelFlou.SetActive(false);
+        panelFlou.SetActive(false);
 
     }
 
