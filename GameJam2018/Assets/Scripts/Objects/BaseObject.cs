@@ -13,6 +13,7 @@ public abstract class BaseObject : MonoBehaviour {
     public float baseHeight;
     public RepareParticleEmitter repareParticle;
     public DestroyParticleEmitter destroyParticle;
+    public bool isWellPlaced;
 
 
 	// Use this for initialization

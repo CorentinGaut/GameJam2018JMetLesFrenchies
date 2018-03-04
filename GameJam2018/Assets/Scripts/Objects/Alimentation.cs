@@ -32,18 +32,23 @@ public class Alimentation : BaseObject {
         base.Repare();
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "AlimentationEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
-            
+            isWellPlaced = true;
+
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "AlimentationEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

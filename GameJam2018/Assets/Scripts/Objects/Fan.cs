@@ -34,18 +34,23 @@ public class Fan : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "FaneEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
+            isWellPlaced = true;
 
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "FaneEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

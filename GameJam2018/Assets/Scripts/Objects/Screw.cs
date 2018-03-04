@@ -34,18 +34,23 @@ public class Screw : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "VisEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
+            isWellPlaced = true;
 
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "VisEmplacement" )
+        {
+
+            isWellPlaced = false;
         }
     }
 }

@@ -33,18 +33,21 @@ public class GPU : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
+            isWellPlaced = true;
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
+        }
+    }
 
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "GPUEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

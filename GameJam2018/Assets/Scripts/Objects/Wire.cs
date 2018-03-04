@@ -35,18 +35,23 @@ public class Wire : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "CableEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
+            isWellPlaced = true;
 
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "CableEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }
