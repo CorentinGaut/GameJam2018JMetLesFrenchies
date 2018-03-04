@@ -28,6 +28,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPhotoWindow;
     private GameObject beauMec;
     private bool boolBeauMec;
+    private GameObject cmdPrompt;
+    private bool boolCmdPrompt;
     public float coolDownPng;
     private bool allowClickPhoto;
 
@@ -48,6 +50,7 @@ public class WindowsButton : MonoBehaviour {
                                         functionFermer, functionButtonPlayDiablo, // fonction de diablo
                                         functionFermer, // fonction de diablo Warning
                                         functionFermer, functionPrecedent, functionButtonBeauMec, // fonction de PhotoWindow
+                                        functionFermer, // FN de command Prompt
                                         functionFermer}; // fonction de BeauMec
 
         listButtons = this.GetComponentsInChildren<Button>();
@@ -102,6 +105,10 @@ public class WindowsButton : MonoBehaviour {
         photoWindow = this.transform.Find("PhotoWindow").gameObject;
         boolPhotoWindow = false;
         photoWindow.SetActive(boolPhotoWindow);
+
+        cmdPrompt = this.transform.Find("commandPrompt").gameObject;
+        boolCmdPrompt = false;
+        cmdPrompt.SetActive(boolCmdPrompt);
 
         // BeauMec.png Initialisation
         beauMec = this.transform.Find("BeauMec").gameObject;
@@ -253,6 +260,8 @@ public class WindowsButton : MonoBehaviour {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
+        boolCmdPrompt = true;
+        cmdPrompt.SetActive(cmdPrompt);
     }
 
     void functionButtonTousProgs()
