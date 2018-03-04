@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 780c8de12982b9b40935fa50b46f7f5f
-timeCreated: 1520138890
+guid: ea1035cb124ad204cad0e54c88bb21ac
+timeCreated: 1520141985
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,8 @@ ModelImporter:
     100002: //RootNode
     400000: default
     400002: //RootNode
-    2100000: defaultMat
+    2100000: Ethernet
+    2100002: Ethernet_gris
     2300000: default
     3300000: default
     4300000: default
