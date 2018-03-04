@@ -48,6 +48,7 @@ public class TimerMorton : MonoBehaviour {
         if (compt == tabBlockClone.Length)
         {
             GameManager.listCreated = false;
+            BaseObject.id = 0;
             // Fin du jeu Changement de scene suivant les scores
             Debug.Log("FIN DU JEU");
             

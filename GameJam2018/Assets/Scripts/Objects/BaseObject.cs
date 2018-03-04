@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseObject : MonoBehaviour {
 
-    static protected int id=0;
+    static public int id=0;
     public int itemId;
     public int HP;
     public bool isRepared;
