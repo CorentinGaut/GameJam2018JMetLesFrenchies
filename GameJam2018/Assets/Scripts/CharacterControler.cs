@@ -78,7 +78,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Repare") && closestObject != null)
         {
-            kick.Play();
+            //kick.Play();
             anim.SetBool("isReparing", true);
             StartCoroutine(WaitAnim());
             closestObject.Repare();
