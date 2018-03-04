@@ -30,6 +30,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolBeauMec;
     public float coolDownPng;
     private bool allowClickPhoto;
+    private GameObject particule1, particule2, particule3, particule4, particule5, particule6;
+    private bool boolPart; 
 
     //Son
     private AudioSource audioSource;
@@ -98,6 +100,21 @@ public class WindowsButton : MonoBehaviour {
         beauMec = this.transform.Find("BeauMec").gameObject;
         boolBeauMec = false;
         beauMec.SetActive(boolBeauMec);
+
+        // Desactiver virus dans la scene 
+        particule1 = GameObject.Find("ParticulePoussiere1");
+        particule2 = GameObject.Find("ParticulePoussiere2");
+        particule3 = GameObject.Find("ParticulePoussiere3");
+        particule4 = GameObject.Find("ParticulePoussiere4");
+        particule5 = GameObject.Find("ParticulePoussiere5");
+        particule6 = GameObject.Find("ParticulePoussiere6");
+        boolPart = false;
+        particule1.SetActive(boolPart);
+        particule2.SetActive(boolPart);
+        particule3.SetActive(boolPart);
+        particule4.SetActive(boolPart);
+        particule5.SetActive(boolPart);
+        particule6.SetActive(boolPart);
     }
 	
 	// Update is called once per frame
@@ -241,6 +258,15 @@ public class WindowsButton : MonoBehaviour {
         {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
+        
+            boolPart = true;
+            particule1.SetActive(boolPart);
+            particule2.SetActive(boolPart);
+            particule3.SetActive(boolPart);
+            particule4.SetActive(boolPart);
+            particule5.SetActive(boolPart);
+            particule6.SetActive(boolPart);
+
         }
     }
 
