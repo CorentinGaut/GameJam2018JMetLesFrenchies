@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4744087656332048}
   - component: {fileID: 199755611106887916}
   - component: {fileID: 198375378023111274}
-  - component: {fileID: 114032181879834004}
+  - component: {fileID: 114567841030197764}
   m_Layer: 0
   m_Name: DestroyParticle
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114032181879834004
+--- !u!114 &114567841030197764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1021493677561322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccbe783c657f1c4da12e4cd7fb428c5, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f31c97f002af64bb34ecce1b83cff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   destroyedParticle: {fileID: 198375378023111274}
