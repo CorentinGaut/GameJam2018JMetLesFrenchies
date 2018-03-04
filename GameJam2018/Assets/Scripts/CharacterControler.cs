@@ -20,6 +20,8 @@ public class CharacterControler : MonoBehaviour
     public float dureeRalentissement;
     public bool isStuned;
 
+    public AudioSource steps ,kick , pop ,lift ,modem;
+
     private TextScrollview contenu;
 
     // Use this for initialization
@@ -36,8 +38,18 @@ public class CharacterControler : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        if(!isStuned){
+    {
+
+        //sons
+
+        //sons
+        steps = GetComponents<AudioSource>()[0];
+        kick = GetComponents<AudioSource>()[1];
+        pop = GetComponents<AudioSource>()[2];
+        lift = GetComponents<AudioSource>()[3];
+        modem = GetComponents<AudioSource>()[4];
+
+        if (!isStuned){
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
         }else{
@@ -59,6 +71,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Repare"))
         {
+            kick.Play();
             anim.SetBool("isReparing", true);
             StartCoroutine(WaitAnim());
             closestObject.GetComponent<BaseObject>().Repare();
@@ -72,6 +85,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("RotateD"))
         {
+            pop.Play();
             if (pickedUpObject == null)
                 closestObject.GetComponent<BaseObject>().Rotate(45);
             Debug.Log("droite");
@@ -79,6 +93,7 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("RotateG"))
         {
+            pop.Play();
             if(pickedUpObject == null)
             closestObject.GetComponent<BaseObject>().Rotate(-45);
             Debug.Log("gauche");
@@ -115,6 +130,7 @@ public class CharacterControler : MonoBehaviour
 
     private void PickUp()
     {
+        lift.Play();
         if(closestObject!=null&& pickedUpObject==null)
         {
             anim.SetBool("isWearing", true);
@@ -139,6 +155,9 @@ public class CharacterControler : MonoBehaviour
         {
             
             anim.SetBool("isMoving", true);
+            //startsound
+            steps.Play();
+
             if (direction.magnitude > 1)
                 direction.Normalize();
             this.transform.position += direction/3* tweakRalentissement*0.5f;
@@ -147,6 +166,8 @@ public class CharacterControler : MonoBehaviour
         }
         if (direction.magnitude == 0)
         {
+            //stopsound
+            steps.Stop();
             anim.SetBool("isMoving", false);
         }
     }
@@ -179,6 +200,8 @@ public class CharacterControler : MonoBehaviour
     }
 
     public void ralentir(){
+        //modemsound
+        modem.Play();
         tweakRalentissement=vitesseRalenti;
         contenu.AddText("Ie utilise trop de processeur, ralentissement de l'ordinateur !");
         StartCoroutine(finRalentissement());    
