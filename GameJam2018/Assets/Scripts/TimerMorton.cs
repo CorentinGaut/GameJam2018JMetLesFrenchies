@@ -51,7 +51,7 @@ public class TimerMorton : MonoBehaviour {
             BaseObject.id = 0;
             // Fin du jeu Changement de scene suivant les scores
             Debug.Log("FIN DU JEU");
-            Debug.Log(BaseObject.GetScore());
+            Debug.Log(BaseObject.GetScore() + "bluuuuuuub");
             if (BaseObject.GetScore()>0.75)
             {
                 SceneManager.LoadScene("BlueScreen");

@@ -110,10 +110,8 @@ public abstract class BaseObject : MonoBehaviour {
         for (int i = 0; i < GameManager.itemsWellPlacedandRepared.Count; i++)
         {
             GameManager.totalHp += GameManager.objects[i].maxHP;
-            Debug.Log(GameManager.objects[i].maxHP);
             if (GameManager.itemsWellPlacedandRepared[i] == true)
             {
-                //Debug.Log(i);
                 GameManager.repareScore += GameManager.objects[i].HP;
             }
         }
