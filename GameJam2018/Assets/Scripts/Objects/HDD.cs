@@ -34,9 +34,9 @@ public class HDD : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "HDDEmplacement")
+        if (collision.tag == "HDDEmplacement" && transform.parent == null)
         {
             Debug.Log("HDD est au bon endroit");
 
@@ -47,7 +47,6 @@ public class HDD : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }

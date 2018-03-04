@@ -35,9 +35,9 @@ public class Screw : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "VisEmplacement")
+        if (collision.tag == "VisEmplacement" && transform.parent == null)
         {
             Debug.Log("Vis est qu bon endroit");
 
@@ -48,7 +48,6 @@ public class Screw : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }
