@@ -274,7 +274,7 @@ public class WindowsButton : MonoBehaviour {
     }
 
     void functionBoutonShutdown() {
-
+        Debug.Log("SHUTDOWN");
        Application.Quit();
     }
 
