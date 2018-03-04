@@ -45,7 +45,8 @@ public class Alimentation : BaseObject {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -58,6 +59,7 @@ public class Alimentation : BaseObject {
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
 
+            locationParticle.StopEmitParticle();
 
         }
     }

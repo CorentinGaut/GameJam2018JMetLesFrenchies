@@ -49,7 +49,8 @@ public class Wire : BaseObject {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -61,6 +62,7 @@ public class Wire : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }

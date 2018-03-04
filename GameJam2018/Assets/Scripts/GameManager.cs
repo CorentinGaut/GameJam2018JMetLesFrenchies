@@ -23,6 +23,13 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
+    private void Update()
+    {
+        
+        {
+            Debug.Log(repareScore);
+            Debug.Log(totalHp);
+        }
+    }
 
-	
 }
