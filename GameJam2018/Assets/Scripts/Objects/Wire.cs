@@ -39,15 +39,12 @@ public class Wire : BaseObject {
     {
         if (collision.tag == "CableEmplacement" && transform.parent == null)
         {
-            Debug.Log("Cable est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("Cable est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }

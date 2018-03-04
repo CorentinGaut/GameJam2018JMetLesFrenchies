@@ -6,11 +6,11 @@ public class CharacterControler : MonoBehaviour
 {
 
     Vector3 direction;
-    public List<GameObject> closeObjects;
-    public GameObject closestObject;
+    public List<BaseObject> closeObjects;
+    public BaseObject closestObject;
     Vector3 pos;
     float minDistObject;
-    GameObject pickedUpObject;
+    BaseObject pickedUpObject;
     Vector3 pickedUpItemPos;
     Animator anim;
     [Header("Sort")]
@@ -26,7 +26,7 @@ public class CharacterControler : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        closeObjects = new List<GameObject>();
+        closeObjects = new List<BaseObject>();
         direction = new Vector3(0,0,0);
         minDistObject = 3000;
         isStuned=false;
@@ -61,26 +61,26 @@ public class CharacterControler : MonoBehaviour
         {
             anim.SetBool("isReparing", true);
             StartCoroutine(WaitAnim());
-            closestObject.GetComponent<BaseObject>().Repare();
+            closestObject.Repare();
         }
 
         if(Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log("blub");
-            closestObject.GetComponent<BaseObject>().Destroy();
+            closestObject.Destroy();
         }
 
         if (Input.GetButtonDown("RotateD"))
         {
             if (pickedUpObject == null)
-                closestObject.GetComponent<BaseObject>().Rotate(45);
+                closestObject.Rotate(45);
             Debug.Log("droite");
         }
 
         if (Input.GetButtonDown("RotateG"))
         {
             if(pickedUpObject == null)
-            closestObject.GetComponent<BaseObject>().Rotate(-45);
+            closestObject.Rotate(-45);
             Debug.Log("gauche");
         }
 
@@ -93,12 +93,11 @@ public class CharacterControler : MonoBehaviour
         pos = gameObject.transform.position;
         if(closeObjects.Count>0)
         {
-            foreach(GameObject go in closeObjects)
-            {                    Debug.Log(go.gameObject.name);
+            foreach(BaseObject go in closeObjects)
+            {
                 float dist = (go.transform.position-pos).sqrMagnitude;
                 if(dist<minDistObject)
                 {
-
                     minDistObject = dist;
                     closestObject = go;
                 }
@@ -121,7 +120,7 @@ public class CharacterControler : MonoBehaviour
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, /*-((closestObject.transform.localScale.z/2f)+1)*/-((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y,((closestObject.GetComponent<BoxCollider>().size.z/2)+0.22f)*5 );
         }
         else if(pickedUpObject!=null)
         {
@@ -153,12 +152,11 @@ public class CharacterControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        closeObjects.Add(other.gameObject);
+        closeObjects.Add(other.gameObject.GetComponent<BaseObject>());
     }
     private void OnTriggerExit(Collider other)
     {
-        closeObjects.Remove(other.gameObject);
+        closeObjects.Remove(other.gameObject.GetComponent<BaseObject>());
         if(closeObjects.Count==0)
         {
             closestObject = null;

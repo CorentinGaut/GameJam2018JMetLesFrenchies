@@ -37,15 +37,12 @@ public class Alimentation : BaseObject {
     {
         if (collision.tag == "AlimentationEmplacement" && transform.parent == null)
         {
-            Debug.Log("Alim est qu bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("Alim est qu bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet"); 
             }
             
         }

@@ -38,15 +38,12 @@ public class HDD : BaseObject {
     {
         if (collision.tag == "HDDEmplacement" && transform.parent == null)
         {
-            Debug.Log("HDD est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("HDD est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }

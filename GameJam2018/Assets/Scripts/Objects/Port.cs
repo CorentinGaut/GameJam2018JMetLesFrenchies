@@ -38,15 +38,12 @@ public class Port : BaseObject {
     {
         if (collision.tag == "PortEmplacement" && transform.parent == null)
         {
-            Debug.Log("Port est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("Port est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Il faut reparer l'objet");
             }
 
         }
