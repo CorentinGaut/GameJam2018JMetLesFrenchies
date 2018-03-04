@@ -28,6 +28,7 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPhotoWindow;
     private GameObject beauMec;
     private bool boolBeauMec;
+    public float coolDownPng;
 
     //Son
     private AudioSource audioSource;
@@ -53,6 +54,8 @@ public class WindowsButton : MonoBehaviour {
         Debug.Log(listButtons.Length);
 
         panelFlou.SetActive(false);
+
+      //  timeStamp = Time.time + coolDownPng;
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -144,11 +147,15 @@ public class WindowsButton : MonoBehaviour {
 
     void functionButtonBeauMec()
     {
-        if (!boolBeauMec)
+        if(Time.time + coolDownPng <= Time.time)
         {
-            boolBeauMec = true;
-            beauMec.SetActive(boolBeauMec);
-            boolBeauMec = false;
+            if (!boolBeauMec)
+            {
+                boolBeauMec = true;
+                beauMec.SetActive(boolBeauMec);
+                boolBeauMec = false;
+                // Liver le jeu pour stun l'anti virus
+            }
         }
     }
 
@@ -245,6 +252,7 @@ public class WindowsButton : MonoBehaviour {
         Debug.Log("Test bouton Tous les progs reussi !");
         if (!boolDiabloWarning) // Afficher Demarrer
         {
+            // Lier le jeu avec une fonction qui casse la carte graphique
             boolDiabloWarning = true;
             diabloWarning.SetActive(boolDiabloWarning);
             boolDiabloWarning = false;
