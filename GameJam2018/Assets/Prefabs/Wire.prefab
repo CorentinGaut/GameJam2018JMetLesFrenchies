@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784382288503218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.446248, y: 0, z: -22.561598}
+  m_LocalPosition: {x: -13.51, y: 0.4, z: -6.02}
   m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_Children:
   - {fileID: 4045044866885388}
@@ -218,6 +218,7 @@ MonoBehaviour:
   maxHP: 0
   repareCooldown: 0
   repareCollider: {fileID: 65105330109179672}
+  endroitCollider: {fileID: 0}
   baseHeight: 0
   repareParticle: {fileID: 114318400824890260}
   destroyParticle: {fileID: 114023146640492770}

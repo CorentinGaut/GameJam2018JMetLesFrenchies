@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235759714475832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.508133, y: 0.46, z: -20.792652}
+  m_LocalPosition: {x: 3.42, y: 0.38, z: -3.066763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4141931774156594}
@@ -214,8 +214,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3707962, y: 0.9619708, z: 5.55}
-  m_Center: {x: 0, y: -0.019014597, z: 0}
+  m_Size: {x: 3.26, y: 0.9619708, z: 5.68}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65465998144417622
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -226,8 +226,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.8, y: 0.91978693, z: 7.05}
-  m_Center: {x: 0, y: -0.040106535, z: 0}
+  m_Size: {x: 4.76, y: 1.03, z: 7.18}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114027130767202510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,7 +243,8 @@ MonoBehaviour:
   isRepared: 0
   maxHP: 0
   repareCooldown: 0
-  repareCollider: {fileID: 0}
+  repareCollider: {fileID: 65465998144417622}
+  endroitCollider: {fileID: 0}
   baseHeight: 0
   repareParticle: {fileID: 114371240003681986}
   destroyParticle: {fileID: 114316730775537184}
