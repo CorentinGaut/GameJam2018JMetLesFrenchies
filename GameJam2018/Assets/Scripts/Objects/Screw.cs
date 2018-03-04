@@ -33,4 +33,24 @@ public class Screw : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "VisEmplacement")
+        {
+            Debug.Log("Vis est qu bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("Vis est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }

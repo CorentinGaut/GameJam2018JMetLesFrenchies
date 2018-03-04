@@ -245,8 +245,8 @@ MonoBehaviour:
   repareCooldown: 0
   repareCollider: {fileID: 0}
   baseHeight: 0
-  repareParticle: {fileID: 0}
-  destroyParticle: {fileID: 0}
+  repareParticle: {fileID: 114371240003681986}
+  destroyParticle: {fileID: 114316730775537184}
 --- !u!114 &114316730775537184
 MonoBehaviour:
   m_ObjectHideFlags: 1

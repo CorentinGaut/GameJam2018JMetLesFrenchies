@@ -33,4 +33,24 @@ public class Fan : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "FaneEmplacement")
+        {
+            Debug.Log("Fane est au bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("Fan est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }

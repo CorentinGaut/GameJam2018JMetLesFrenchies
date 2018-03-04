@@ -33,4 +33,24 @@ public class Wire : BaseObject {
     {
         base.Repare();
     }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "CableEmplacement")
+        {
+            Debug.Log("Cable est au bon endroit");
+
+            if (HP == maxHP)
+            {
+                Debug.Log("Cable est au bon endroit, objet réparé");
+            }
+            else
+            {
+                Debug.Log("Reparer l'objet");
+                base.Repare();
+            }
+
+        }
+    }
 }
