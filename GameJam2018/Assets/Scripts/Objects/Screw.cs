@@ -12,6 +12,10 @@ public class Screw : BaseObject {
         isRepared = true;
         repareCooldown = 1.0f;
         baseHeight = gameObject.transform.position.y;
+        itemsWellPlacedandRepared.Add(false);
+
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -40,8 +44,11 @@ public class Screw : BaseObject {
         {
 
             isWellPlaced = true;
-
-
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId] = true;
+                CheckItemList();
+            }
         }
     }
 
@@ -51,6 +58,8 @@ public class Screw : BaseObject {
         {
 
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
+
         }
     }
 }

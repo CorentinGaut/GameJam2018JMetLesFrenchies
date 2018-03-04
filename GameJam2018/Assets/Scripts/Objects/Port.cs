@@ -12,6 +12,9 @@ public class Port : BaseObject {
         maxHP = 100;
         isRepared = true;
         repareCooldown = 1.0f;
+        itemsWellPlacedandRepared.Add(false);
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -39,8 +42,11 @@ public class Port : BaseObject {
         if (collision.tag == "PortEmplacement" && transform.parent == null)
         {
             isWellPlaced = true;
-
-
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId] = true;
+                CheckItemList();
+            }
         }
     }
 
@@ -50,6 +56,8 @@ public class Port : BaseObject {
         {
 
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
+
         }
     }
 }
