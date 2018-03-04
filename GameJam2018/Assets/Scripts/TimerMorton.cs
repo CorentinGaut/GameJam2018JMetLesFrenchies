@@ -7,7 +7,9 @@ public class TimerMorton : MonoBehaviour {
     
     private int compt;
     private UnityEngine.UI.Image[] tabBlockClone;
-    public float timeDelay;
+    [Tooltip("En secondes")]
+    public float gameTime;
+    private float timeDelay;
     private bool computerDestroy; // Variable de victoire ou non 
 
     // Use this for initialization
@@ -22,6 +24,7 @@ public class TimerMorton : MonoBehaviour {
 
         // Temporairement la victoire est au destructeur
         computerDestroy = true;
+        timeDelay=gameTime/38;
     }
 	
 	// Update is called once per frame
