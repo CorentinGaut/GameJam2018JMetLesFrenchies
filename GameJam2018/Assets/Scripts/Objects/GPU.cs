@@ -11,6 +11,9 @@ public class GPU : BaseObject {
         maxHP = 350;
         isRepared = true;
         repareCooldown = 1.0f;
+        itemsWellPlacedandRepared.Add(false);
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -38,7 +41,11 @@ public class GPU : BaseObject {
         if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
             isWellPlaced = true;
-
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId]=true;
+                CheckItemList();
+            }
         }
     }
 
@@ -46,8 +53,8 @@ public class GPU : BaseObject {
     {
         if (collision.tag == "GPUEmplacement")
         {
-
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
         }
     }
 }

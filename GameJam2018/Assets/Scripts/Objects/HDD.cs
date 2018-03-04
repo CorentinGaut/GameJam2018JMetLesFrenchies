@@ -11,6 +11,9 @@ public class HDD : BaseObject {
         maxHP = 500;
         isRepared = true;
         repareCooldown = 1.0f;
+        itemsWellPlacedandRepared.Add(false);
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -37,6 +40,11 @@ public class HDD : BaseObject {
         if (collision.tag == "HDDEmplacement" && transform.parent == null)
         {
             isWellPlaced = true;
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId] = true;
+                CheckItemList();
+            }
         }
     }
 
@@ -44,8 +52,8 @@ public class HDD : BaseObject {
     {
         if (collision.tag == "HDDEmplacement")
         {
-
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
         }
     }
 }

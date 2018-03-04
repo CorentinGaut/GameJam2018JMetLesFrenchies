@@ -12,6 +12,9 @@ public class Fan : BaseObject {
         maxHP = 200;
         isRepared = true;
         repareCooldown = 1.0f;
+        itemsWellPlacedandRepared.Add(false);
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -36,21 +39,26 @@ public class Fan : BaseObject {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "FaneEmplacement" && transform.parent == null)
+        if (collision.tag == "FanEmplacement" && transform.parent == null)
         {
 
             isWellPlaced = true;
-
-
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId] = true;
+                CheckItemList();
+            }
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.tag == "FaneEmplacement")
+        if (collision.tag == "FanEmplacement")
         {
 
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
+
         }
     }
 }

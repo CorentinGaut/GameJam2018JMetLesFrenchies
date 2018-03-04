@@ -11,6 +11,10 @@ public class Alimentation : BaseObject {
         maxHP = 400;
         isRepared = true;
         repareCooldown = 1.0f;
+        itemsWellPlacedandRepared.Add(false);
+
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
@@ -38,8 +42,11 @@ public class Alimentation : BaseObject {
         {
 
             isWellPlaced = true;
-
-
+            if (isRepared && listCreated)
+            {
+                itemsWellPlacedandRepared[itemId] = true;
+                CheckItemList();
+            }
         }
     }
 
@@ -49,6 +56,8 @@ public class Alimentation : BaseObject {
         {
 
             isWellPlaced = false;
+            itemsWellPlacedandRepared[itemId] = false;
+
         }
     }
 }

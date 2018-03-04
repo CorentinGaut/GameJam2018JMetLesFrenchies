@@ -47,7 +47,12 @@ public class CharacterControler : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.K)){
             //debug
-            ralentir();
+            int i = 0;
+            foreach (bool b in BaseObject.itemsWellPlacedandRepared)
+            {
+                Debug.Log(i + " : " + b.ToString());
+                i++;
+            }
         }
         
 
