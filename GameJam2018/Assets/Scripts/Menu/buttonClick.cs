@@ -9,16 +9,17 @@ public class buttonClick : MonoBehaviour {
 
     private Button[] listButtons;
     private UnityAction[] tabFonctions;
-    private GameObject dlcWindows , tutoWindow;
-    private bool boolWindows , boolTutoWindows;
+    private GameObject dlcWindows , tutoWindow, tutoWindow2;
+    private bool boolWindows , boolTutoWindows, boolTutoWindows2;
     private AudioSource sound;
 
 
     // Use this for initialization
     void Start () {
-        UnityAction[] tabFonctions = {  functionButtonUser1 , functionButtonUser2 , functionButtonClose , functionButtonTuto, // fonction des premiers boutons
+        UnityAction[] tabFonctions = {  functionButtonUser1 , functionButtonUser2 , functionButtonClose , functionButtonTuto,// fonction des premiers boutons
                                         functionButtonFermer , // fonction de dlcWindows
-                                        functionButtonFermer }; // fonction de TutoLayout
+   
+                                        functionButtonNext,functionButtonFermer }; // fonction de TutoLayout
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -35,6 +36,10 @@ public class buttonClick : MonoBehaviour {
         tutoWindow = this.transform.Find("TutoLayout").gameObject;
         boolTutoWindows = false;
         tutoWindow.SetActive(boolTutoWindows);
+
+        tutoWindow2 = this.transform.Find("TutoLayout2").gameObject;
+        boolTutoWindows2 = false;
+        tutoWindow2.SetActive(boolTutoWindows2);
 
         //init sound
 
@@ -56,6 +61,8 @@ public class buttonClick : MonoBehaviour {
 
     void functionButtonUser2()
     {
+
+        Debug.Log("wololo");
         if (!boolWindows)
         {
             boolWindows = true;
@@ -77,6 +84,16 @@ public class buttonClick : MonoBehaviour {
             boolTutoWindows = true;
             tutoWindow.SetActive(boolTutoWindows);
             boolWindows = !boolTutoWindows;
+        }
+    }
+    void functionButtonNext()
+    {
+        if (!boolTutoWindows2)
+        {
+            boolTutoWindows2 = true;
+           // tutoWindow.SetActive(boolTutoWindows);
+            tutoWindow2.SetActive(boolTutoWindows2);
+            boolTutoWindows2 = !boolTutoWindows2;
         }
     }
     void functionButtonFermer()

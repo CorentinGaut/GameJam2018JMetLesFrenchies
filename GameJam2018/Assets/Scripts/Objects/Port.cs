@@ -10,7 +10,7 @@ public class Port : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 100;
+        maxHP = 10;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);

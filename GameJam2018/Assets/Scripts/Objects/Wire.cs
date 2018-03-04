@@ -11,7 +11,7 @@ public class Wire : BaseObject {
         base.Start();
         baseHeight = gameObject.transform.position.y;
 
-        maxHP = 50;
+        maxHP = 10;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);

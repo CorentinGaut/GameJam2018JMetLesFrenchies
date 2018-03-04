@@ -10,7 +10,7 @@ public class Fan : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 200;
+        maxHP = 20;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);

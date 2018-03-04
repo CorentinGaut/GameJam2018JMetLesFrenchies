@@ -60,6 +60,7 @@ public class TimerMorton : MonoBehaviour {
             {
                 // Mettre le booean de buttons à true
                 this.transform.parent.Find("Buttons").GetComponent<WindowsButton>().conditionVictoire = true;
+                GameObject.Find("Player").GetComponent<CharacterControler>().StunFinDeJeu();
             }
         }
 
