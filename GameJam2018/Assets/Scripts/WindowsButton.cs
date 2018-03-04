@@ -31,6 +31,9 @@ public class WindowsButton : MonoBehaviour {
     public float coolDownPng;
     private bool allowClickPhoto;
 
+    // Player
+    private CharacterControler player;
+
     //Son
     private AudioSource audioSource;
 
@@ -57,6 +60,8 @@ public class WindowsButton : MonoBehaviour {
         panelFlou.SetActive(false);
 
         allowClickPhoto = true;
+
+        player = GameObject.Find("Player").GetComponent<CharacterControler>();
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -154,6 +159,7 @@ public class WindowsButton : MonoBehaviour {
             beauMec.SetActive(boolBeauMec);
             boolBeauMec = false;
             // Liver le jeu pour stun l'anti virus
+            player.Stun();
             StartCoroutine(coolDown());
         }
     }
@@ -172,7 +178,7 @@ public class WindowsButton : MonoBehaviour {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        player.ralentir();
     }
 
     void functionFermer()
@@ -199,7 +205,7 @@ public class WindowsButton : MonoBehaviour {
                 boolGoogle = true;
             }
         }
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        player.ralentir();
     }
 
     void functionButtonRecherche()
@@ -209,7 +215,7 @@ public class WindowsButton : MonoBehaviour {
         Invoke("pupUps", timePopUp);
         Invoke("pupUps", timePopUp * 2);
         comptPopUp = 0;
-        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
+        player.ralentir();
     }
 
     void pupUps()
@@ -258,17 +264,18 @@ public class WindowsButton : MonoBehaviour {
             boolDiabloWarning = true;
             diabloWarning.SetActive(boolDiabloWarning);
             boolDiabloWarning = false;
-            StartCoroutine(flou());
+            GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
+           // StartCoroutine(flou());
         }
     }
 
     IEnumerator flou()
     {
-        //panelFlou.SetActive(true);
+        panelFlou.SetActive(true);
         print(Time.time);
         yield return new WaitForSeconds(5);
         print(Time.time);
-        //panelFlou.SetActive(false);
+        panelFlou.SetActive(false);
 
     }
 

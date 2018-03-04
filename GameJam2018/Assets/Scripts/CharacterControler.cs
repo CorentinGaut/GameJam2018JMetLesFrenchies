@@ -171,7 +171,7 @@ public class CharacterControler : MonoBehaviour
         Debug.Log("finStun");
     }
 
-    void Stun(){
+    public void Stun(){
         isStuned=true;
         direction.x=0;
         direction.y=0;

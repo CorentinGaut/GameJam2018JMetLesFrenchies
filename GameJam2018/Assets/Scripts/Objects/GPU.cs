@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GPU : BaseObject {
 
+    private bool isGPURepared;
+    public GameObject nVidio;
+
     // Use this for initialization
     void Start()
     {
@@ -13,14 +16,19 @@ public class GPU : BaseObject {
         maxHP = 350;
         isRepared = true;
         repareCooldown = 1.0f;
+        isGPURepared = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Repare();
+        }
     }
 
     public override void Destroy()
@@ -31,6 +39,11 @@ public class GPU : BaseObject {
     public override void Repare()
     {
         base.Repare();
+        if (HP == maxHP && !isGPURepared)
+        {
+            isGPURepared = true;
+            nVidio.SetActive(true);
+        }
     }
 
 
