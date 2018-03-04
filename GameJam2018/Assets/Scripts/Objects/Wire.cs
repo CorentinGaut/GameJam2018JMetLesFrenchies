@@ -6,14 +6,16 @@ public class Wire : BaseObject {
 
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         baseHeight = gameObject.transform.position.y;
 
         maxHP = 50;
         isRepared = true;
         repareCooldown = 1.0f;
-        itemsWellPlacedandRepared.Add(false);
+        GameManager.itemsWellPlacedandRepared.Add(false);
+        GameManager.objects.Add(this);
 
         itemId = id;
         id++;
@@ -45,11 +47,9 @@ public class Wire : BaseObject {
         {
 
             isWellPlaced = true;
-            if (isRepared && listCreated)
-            {
-                itemsWellPlacedandRepared[itemId] = true;
+            GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            }
+            
         }
     }
 
@@ -59,7 +59,8 @@ public class Wire : BaseObject {
         {
 
             isWellPlaced = false;
-            itemsWellPlacedandRepared[itemId] = false;
+            GameManager.itemsWellPlacedandRepared[itemId] = false;
+            CheckItemList();
 
         }
     }

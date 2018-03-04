@@ -47,15 +47,18 @@ public class TimerMorton : MonoBehaviour {
         compt++;
         if (compt == tabBlockClone.Length)
         {
+            GameManager.listCreated = false;
             // Fin du jeu Changement de scene suivant les scores
             Debug.Log("FIN DU JEU");
-            if (computerDestroy)
+            
+            if (BaseObject.GetScore()<0.75)
             {
                 SceneManager.LoadScene("BlueScreen");
             }
             else
             {
-                SceneManager.LoadScene("????"); // Autre scene à faire
+                // Mettre le booean de buttons à true
+                this.transform.parent.Find("Buttons").GetComponent<WindowsButton>().conditionVictoire = true;
             }
         }
     }
