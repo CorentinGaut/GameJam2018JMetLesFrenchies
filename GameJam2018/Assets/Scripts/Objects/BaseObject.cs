@@ -103,18 +103,8 @@ public abstract class BaseObject : MonoBehaviour {
         repareParticle.StopEmitParticle();
     }
 
-    public static int GetScore()
+    public static float GetScore()
     {
-        GameManager.repareScore = 0;
-        GameManager.totalHp = 0;
-        for (int i = 0; i < GameManager.itemsWellPlacedandRepared.Count; i++)
-        {
-            GameManager.totalHp += GameManager.objects[i].maxHP;
-            if (GameManager.itemsWellPlacedandRepared[i] == true)
-            {
-                GameManager.repareScore += GameManager.objects[i].HP;
-            }
-        }
-        return GameManager.repareScore / GameManager.totalHp;
+        return (float)GameManager.repareScore / (float)GameManager.totalHp;
     }
 }
