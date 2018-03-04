@@ -10,14 +10,14 @@ public class CPU : BaseObject {
     {
         baseHeight = gameObject.transform.position.y;
 
-        HP = 250;
         maxHP = 250;
         isRepared = true;
         repareCooldown = 1.0f;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    protected override void Update () {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;

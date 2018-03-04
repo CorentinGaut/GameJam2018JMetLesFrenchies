@@ -9,15 +9,15 @@ public class Port : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-        HP = 100;
         maxHP = 100;
         isRepared = true;
         repareCooldown = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;

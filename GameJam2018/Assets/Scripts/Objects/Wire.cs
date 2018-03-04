@@ -10,15 +10,15 @@ public class Wire : BaseObject {
     {
         baseHeight = gameObject.transform.position.y;
 
-        HP = 50;
         maxHP = 50;
         isRepared = true;
         repareCooldown = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;

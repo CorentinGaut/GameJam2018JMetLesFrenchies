@@ -20,7 +20,9 @@ public abstract class BaseObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
+        if (HP < maxHP)
+            isRepared = false;
 		
 	}
 

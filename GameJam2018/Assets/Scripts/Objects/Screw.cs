@@ -8,7 +8,6 @@ public class Screw : BaseObject {
     // Use this for initialization
     void Start()
     {
-        HP = 1000;
         maxHP = 1000;
         isRepared = true;
         repareCooldown = 1.0f;
@@ -16,8 +15,9 @@ public class Screw : BaseObject {
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
