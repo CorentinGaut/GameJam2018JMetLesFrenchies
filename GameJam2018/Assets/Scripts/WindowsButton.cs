@@ -264,11 +264,11 @@ public class WindowsButton : MonoBehaviour {
 
     IEnumerator flou()
     {
-        panelFlou.SetActive(true);
+        //panelFlou.SetActive(true);
         print(Time.time);
         yield return new WaitForSeconds(5);
         print(Time.time);
-        panelFlou.SetActive(false);
+        //panelFlou.SetActive(false);
 
     }
 
