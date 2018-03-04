@@ -30,6 +30,8 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPhotoWindow;
     private GameObject beauMec;
     private bool boolBeauMec;
+    private GameObject cmdPrompt;
+    private bool boolCmdPrompt;
  
     private GameObject victoryPop;
     private bool boolVictoryPop;
@@ -40,6 +42,10 @@ public class WindowsButton : MonoBehaviour {
 
     public float coolDownPng;
     private bool allowClickPhoto;
+    private GameObject virus1, virus2, virus3, virus4, virus5, virus6;
+    private bool boolPart; 
+
+    
 
     private bool ralentir1, ralentir2, ralentir3;
 
@@ -47,14 +53,16 @@ public class WindowsButton : MonoBehaviour {
     private CharacterControler player;
 
     //Son
-    private AudioSource audioSource;
+    private AudioSource audioSource , audioBoot ,audioError;
 
     private TextScrollview contenuScroll;
 
     // Use this for initialization
     void Start () {
+
+
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
-                                        functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
+                                        functionBoutonShutdown,functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
                                         functionFermer, functionButtonPhotoLouche, // fonction de poste travail
@@ -62,6 +70,7 @@ public class WindowsButton : MonoBehaviour {
                                         functionFermer, // fonction de diablo Warning
                                         functionFermer, functionPrecedent, functionButtonBeauMec, // fonction de PhotoWindow
                                         functionFermer, // fonction de BeauMec
+                                        functionFermer, // FN de command Prompt
                                         functionButtonAcceptUpdate, functionButtonRefuseUpdate, // fonction de VictoryPopUp
                                         functionButtonAcceptUpdate}; // fonction de ForceUpdate
                                         
@@ -97,8 +106,13 @@ public class WindowsButton : MonoBehaviour {
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
 
-        //son
-        audioSource=GetComponent<AudioSource>();
+        //sons
+        audioSource=GetComponents<AudioSource>()[0];
+        audioBoot = GetComponents<AudioSource>()[1];
+        audioError = GetComponents<AudioSource>()[2];
+        audioBoot.Play();
+
+
 
         // Poste de Travail Initialisation
         posteTravail = this.transform.Find("PostTravail").gameObject;
@@ -120,6 +134,10 @@ public class WindowsButton : MonoBehaviour {
         boolPhotoWindow = false;
         photoWindow.SetActive(boolPhotoWindow);
 
+        cmdPrompt = this.transform.Find("commandPrompt").gameObject;
+        boolCmdPrompt = false;
+        cmdPrompt.SetActive(boolCmdPrompt);
+
         // BeauMec.png Initialisation
         beauMec = this.transform.Find("BeauMec").gameObject;
         boolBeauMec = false;
@@ -136,6 +154,20 @@ public class WindowsButton : MonoBehaviour {
         boolForceUpdate = false;
         forceUpdate.SetActive(boolForceUpdate);
         
+        // Desactiver virus dans la scene 
+        virus1 = GameObject.Find("ParticulePoussiere1");
+        virus2 = GameObject.Find("ParticulePoussiere2");
+        virus3 = GameObject.Find("ParticulePoussiere3");
+        virus4 = GameObject.Find("ParticulePoussiere4");
+        virus5 = GameObject.Find("ParticulePoussiere5");
+        virus6 = GameObject.Find("ParticulePoussiere6");
+        boolPart = false;
+        virus1.SetActive(boolPart);
+        virus2.SetActive(boolPart);
+        virus3.SetActive(boolPart);
+        virus4.SetActive(boolPart);
+        virus5.SetActive(boolPart);
+        virus6.SetActive(boolPart);
     }
 	
 	// Update is called once per frame
@@ -269,6 +301,8 @@ public class WindowsButton : MonoBehaviour {
 
     void pupUps()
     {
+        //son ici
+        audioError.Play();
         Instantiate(listPopUps[comptPopUp], this.transform);
         comptPopUp++;
     }
@@ -296,7 +330,18 @@ public class WindowsButton : MonoBehaviour {
         {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
+        
+            boolPart = true;
+            virus1.SetActive(boolPart);
+            virus2.SetActive(boolPart);
+            virus3.SetActive(boolPart);
+            virus4.SetActive(boolPart);
+            virus5.SetActive(boolPart);
+            virus6.SetActive(boolPart);
+
         }
+        boolCmdPrompt = true;
+        cmdPrompt.SetActive(cmdPrompt);
     }
 
     void functionButtonTousProgs()
@@ -357,6 +402,11 @@ public class WindowsButton : MonoBehaviour {
             forceUpdate.SetActive(boolForceUpdate);
             boolForceUpdate = false;
         }
+    }
+
+    void functionBoutonShutdown() {
+        Debug.Log("SHUTDOWN");
+       Application.Quit();
     }
 
     IEnumerator flou()

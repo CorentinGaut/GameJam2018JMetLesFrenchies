@@ -6,11 +6,11 @@ public class CharacterControler : MonoBehaviour
 {
 
     Vector3 direction;
-    public List<GameObject> closeObjects;
-    public GameObject closestObject;
+    public List<BaseObject> closeObjects;
+    public BaseObject closestObject;
     Vector3 pos;
     float minDistObject;
-    GameObject pickedUpObject;
+    BaseObject pickedUpObject;
     Vector3 pickedUpItemPos;
     Animator anim;
     [Header("Sort")]
@@ -20,24 +20,38 @@ public class CharacterControler : MonoBehaviour
     public float dureeRalentissement;
     public bool isStuned;
 
+    public AudioSource steps ,kick , pop ,lift ,modem;
+
     private TextScrollview contenu;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
-        closeObjects = new List<GameObject>();
+        closeObjects = new List<BaseObject>();
         direction = new Vector3(0,0,0);
         minDistObject = 3000;
         isStuned=false;
         tweakRalentissement=1f;
         contenu=GameObject.Find("Content").GetComponent<TextScrollview>();
+
+           //sons
+
+        //sons
+        steps = GetComponents<AudioSource>()[0];
+        kick = GetComponents<AudioSource>()[1];
+        pop = GetComponents<AudioSource>()[2];
+        lift = GetComponents<AudioSource>()[3];
+        modem = GetComponents<AudioSource>()[4];
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        if(!isStuned){
+    {
+
+     
+
+        if (!isStuned){
             direction.x = Input.GetAxis("Horizontal");
             direction.z = Input.GetAxis("Vertical");
         }else{
@@ -57,48 +71,51 @@ public class CharacterControler : MonoBehaviour
 
         Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetButtonDown("Repare"))
+        if (Input.GetButtonDown("Repare") && closestObject != null)
         {
+            kick.Play();
             anim.SetBool("isReparing", true);
             StartCoroutine(WaitAnim());
-            closestObject.GetComponent<BaseObject>().Repare();
+            closestObject.Repare();
         }
 
         if(Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log("blub");
-            closestObject.GetComponent<BaseObject>().Destroy();
+            closestObject.Destroy();
         }
 
         if (Input.GetButtonDown("RotateD"))
         {
-            if (pickedUpObject == null)
-                closestObject.GetComponent<BaseObject>().Rotate(45);
+            pop.Play();
+            if (pickedUpObject == null&& closestObject != null)
+                closestObject.Rotate(45);
             Debug.Log("droite");
         }
 
         if (Input.GetButtonDown("RotateG"))
         {
-            if(pickedUpObject == null)
-            closestObject.GetComponent<BaseObject>().Rotate(-45);
+            pop.Play();
+            if(pickedUpObject == null && closestObject != null)
+            closestObject.Rotate(-45);
             Debug.Log("gauche");
         }
 
 
         if (Input.GetButtonDown("Poser"))
         {
-            PickUp();
+            if (closestObject != null)
+                PickUp();
         }
 
         pos = gameObject.transform.position;
         if(closeObjects.Count>0)
         {
-            foreach(GameObject go in closeObjects)
-            {                    Debug.Log(go.gameObject.name);
+            foreach(BaseObject go in closeObjects)
+            {
                 float dist = (go.transform.position-pos).sqrMagnitude;
                 if(dist<minDistObject)
                 {
-
                     minDistObject = dist;
                     closestObject = go;
                 }
@@ -115,13 +132,14 @@ public class CharacterControler : MonoBehaviour
 
     private void PickUp()
     {
+        lift.Play();
         if(closestObject!=null&& pickedUpObject==null)
         {
             anim.SetBool("isWearing", true);
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, /*-((closestObject.transform.localScale.z/2f)+1)*/-((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y,((closestObject.GetComponent<BoxCollider>().size.z/2)+0.22f)*5 );
         }
         else if(pickedUpObject!=null)
         {
@@ -143,6 +161,9 @@ public class CharacterControler : MonoBehaviour
         {
             
             anim.SetBool("isMoving", true);
+            //startsound
+            steps.Play();
+
             if (direction.magnitude > 1)
                 direction.Normalize();
             this.transform.position += direction/3* tweakRalentissement*0.5f;
@@ -151,22 +172,28 @@ public class CharacterControler : MonoBehaviour
         }
         if (direction.magnitude == 0)
         {
+            //stopsound
+            steps.Stop();
             anim.SetBool("isMoving", false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        closeObjects.Add(other.gameObject);
+        if(other.GetComponent<BaseObject>()!=null)
+        closeObjects.Add(other.gameObject.GetComponent<BaseObject>());
     }
     private void OnTriggerExit(Collider other)
     {
-        closeObjects.Remove(other.gameObject);
-        if(closeObjects.Count==0)
+        if (other.GetComponent<BaseObject>() != null)
         {
-            closestObject = null;
+            closeObjects.Remove(other.gameObject.GetComponent<BaseObject>());
+            if(closeObjects.Count==0)
+            {
+                closestObject = null;
+            }
         }
+
     }
 
     IEnumerator FinStun(){
@@ -183,6 +210,8 @@ public class CharacterControler : MonoBehaviour
     }
 
     public void ralentir(){
+        //modemsound
+       // modem.Play();
         tweakRalentissement=vitesseRalenti;
         contenu.AddText("Ie utilise trop de processeur, ralentissement de l'ordinateur !");
         StartCoroutine(finRalentissement());    

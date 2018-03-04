@@ -11,8 +11,6 @@ public class GPU : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-
-        HP = 350;
         maxHP = 350;
         isRepared = true;
         repareCooldown = 1.0f;
@@ -20,8 +18,9 @@ public class GPU : BaseObject {
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void  Update()
     {
+        base.Update();
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
 
@@ -47,21 +46,21 @@ public class GPU : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
-            Debug.Log("GPU est au bon endroit");
+            isWellPlaced = true;
 
-            if (HP == maxHP)
-            {
-                Debug.Log("GPU est au bon endroit, objet réparé");
-            }
-            else
-            {
-                Debug.Log("Reparer l'objet");
-            }
+        }
+    }
 
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "GPUEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

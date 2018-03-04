@@ -8,17 +8,16 @@ public class Screw : BaseObject {
     // Use this for initialization
     void Start()
     {
-        HP = 1000;
         maxHP = 1000;
         isRepared = true;
         repareCooldown = 1.0f;
         baseHeight = gameObject.transform.position.y;
-
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
@@ -35,21 +34,23 @@ public class Screw : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "VisEmplacement" && transform.parent == null)
         {
-            Debug.Log("Vis est qu bon endroit");
 
-            if (HP == maxHP)
-            {
-                Debug.Log("Vis est au bon endroit, objet réparé");
-            }
-            else
-            {
-                Debug.Log("Reparer l'objet");
-            }
+            isWellPlaced = true;
 
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "VisEmplacement" )
+        {
+
+            isWellPlaced = false;
         }
     }
 }

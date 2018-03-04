@@ -13,6 +13,7 @@ public abstract class BaseObject : MonoBehaviour {
     public float baseHeight;
     public RepareParticleEmitter repareParticle;
     public DestroyParticleEmitter destroyParticle;
+    public bool isWellPlaced;
 
 
 	// Use this for initialization
@@ -20,13 +21,15 @@ public abstract class BaseObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
+        if (HP < maxHP)
+            isRepared = false;
 		
 	}
 
     public virtual void Destroy()
     {
-        HP = 0;
+        HP -=30;
         isRepared = false;
         destroyParticle.StartEmitDestroyParticle();
     }
