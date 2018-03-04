@@ -48,6 +48,9 @@ public abstract class BaseObject : MonoBehaviour {
     public virtual void Destroy()
     {
         HP -=30;
+        if(HP<0){
+            HP=0;
+        }
         isRepared = false;
         CheckItemList();
         destroyParticle.StartEmitDestroyParticle();

@@ -360,7 +360,7 @@ public class WindowsButton : MonoBehaviour {
             // Lier le jeu avec une fonction qui casse la carte graphique
             boolDiabloWarning = true;
             diabloWarning.SetActive(boolDiabloWarning);
-            boolDiabloWarning = false;
+            //boolDiabloWarning = false;
             GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
             contenuScroll.AddText("La carte graphique n'est plus détectée. Allez la réparer");
             StartCoroutine(flou());
