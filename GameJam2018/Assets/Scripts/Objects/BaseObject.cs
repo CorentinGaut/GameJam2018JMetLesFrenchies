@@ -18,9 +18,13 @@ public abstract class BaseObject : MonoBehaviour {
     public bool isWellPlaced;
 
 
+    private AudioSource sonRepare;
+
     private void Awake()
     {
 
+
+        sonRepare=GameObject.Find("Player").GetComponents<AudioSource>()[1];
     }
 
     // Use this for initialization
@@ -58,6 +62,7 @@ public abstract class BaseObject : MonoBehaviour {
         {
             HP += 10;
             repareCooldown = 1;
+            sonRepare.Play();
             StartCoroutine("RepareTimer");
             if (HP == maxHP)
             {

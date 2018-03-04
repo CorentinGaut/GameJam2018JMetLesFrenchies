@@ -9,7 +9,7 @@ public class Screw : BaseObject {
     protected override void Start()
     {
         base.Start();
-        maxHP = 1000;
+        maxHP = 10;
         isRepared = true;
         repareCooldown = 1.0f;
         baseHeight = gameObject.transform.position.y;
