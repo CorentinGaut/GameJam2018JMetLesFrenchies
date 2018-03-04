@@ -13,7 +13,6 @@ public class Screw : BaseObject {
         isRepared = true;
         repareCooldown = 1.0f;
         baseHeight = gameObject.transform.position.y;
-
     }
 
     // Update is called once per frame

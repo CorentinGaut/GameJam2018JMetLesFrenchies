@@ -8,7 +8,6 @@ public class GPU : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-
         HP = 350;
         maxHP = 350;
         isRepared = true;
