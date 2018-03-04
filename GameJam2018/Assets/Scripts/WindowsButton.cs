@@ -30,7 +30,7 @@ public class WindowsButton : MonoBehaviour {
     private bool boolBeauMec;
     public float coolDownPng;
     private bool allowClickPhoto;
-    private GameObject particule1, particule2, particule3, particule4, particule5, particule6;
+    private GameObject virus1, virus2, virus3, virus4, virus5, virus6;
     private bool boolPart; 
 
     //Son
@@ -102,19 +102,19 @@ public class WindowsButton : MonoBehaviour {
         beauMec.SetActive(boolBeauMec);
 
         // Desactiver virus dans la scene 
-        particule1 = GameObject.Find("ParticulePoussiere1");
-        particule2 = GameObject.Find("ParticulePoussiere2");
-        particule3 = GameObject.Find("ParticulePoussiere3");
-        particule4 = GameObject.Find("ParticulePoussiere4");
-        particule5 = GameObject.Find("ParticulePoussiere5");
-        particule6 = GameObject.Find("ParticulePoussiere6");
+        virus1 = GameObject.Find("ParticulePoussiere1");
+        virus2 = GameObject.Find("ParticulePoussiere2");
+        virus3 = GameObject.Find("ParticulePoussiere3");
+        virus4 = GameObject.Find("ParticulePoussiere4");
+        virus5 = GameObject.Find("ParticulePoussiere5");
+        virus6 = GameObject.Find("ParticulePoussiere6");
         boolPart = false;
-        particule1.SetActive(boolPart);
-        particule2.SetActive(boolPart);
-        particule3.SetActive(boolPart);
-        particule4.SetActive(boolPart);
-        particule5.SetActive(boolPart);
-        particule6.SetActive(boolPart);
+        virus1.SetActive(boolPart);
+        virus2.SetActive(boolPart);
+        virus3.SetActive(boolPart);
+        virus4.SetActive(boolPart);
+        virus5.SetActive(boolPart);
+        virus6.SetActive(boolPart);
     }
 	
 	// Update is called once per frame
@@ -260,12 +260,12 @@ public class WindowsButton : MonoBehaviour {
             colomneDemarrer.SetActive(boolDemarrer);
         
             boolPart = true;
-            particule1.SetActive(boolPart);
-            particule2.SetActive(boolPart);
-            particule3.SetActive(boolPart);
-            particule4.SetActive(boolPart);
-            particule5.SetActive(boolPart);
-            particule6.SetActive(boolPart);
+            virus1.SetActive(boolPart);
+            virus2.SetActive(boolPart);
+            virus3.SetActive(boolPart);
+            virus4.SetActive(boolPart);
+            virus5.SetActive(boolPart);
+            virus6.SetActive(boolPart);
 
         }
     }
