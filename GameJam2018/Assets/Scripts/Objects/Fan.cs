@@ -9,16 +9,15 @@ public class Fan : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-
-        HP = 200;
         maxHP = 200;
         isRepared = true;
         repareCooldown = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
@@ -35,21 +34,23 @@ public class Fan : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "FaneEmplacement" && transform.parent == null)
         {
-            Debug.Log("Fane est au bon endroit");
 
-            if (HP == maxHP)
-            {
-                Debug.Log("Fan est au bon endroit, objet réparé");
-            }
-            else
-            {
-                Debug.Log("Reparer l'objet");
-            }
+            isWellPlaced = true;
 
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "FaneEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

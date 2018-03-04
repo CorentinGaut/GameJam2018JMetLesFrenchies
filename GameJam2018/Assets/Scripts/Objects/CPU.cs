@@ -10,14 +10,14 @@ public class CPU : BaseObject {
     {
         baseHeight = gameObject.transform.position.y;
 
-        HP = 250;
         maxHP = 250;
-        isRepared = false;
+        isRepared = true;
         repareCooldown = 1.0f;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    protected override void Update () {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
@@ -34,21 +34,22 @@ public class CPU : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "CPUEmplacement" && transform.parent == null)
         {
-            Debug.Log("CPU est au bon endroit");
+            isWellPlaced = true;
 
-            if (HP == maxHP)
-            {
-                Debug.Log("CPU est au bon endroit, objet réparé");
-            }
-            else
-            {
-                Debug.Log("Reparer l'objet");
-            }
 
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "CPUEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }
