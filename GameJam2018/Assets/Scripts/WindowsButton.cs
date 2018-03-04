@@ -41,7 +41,7 @@ public class WindowsButton : MonoBehaviour {
 
 
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
-                                        functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
+                                        functionBoutonShutdown,functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
                                         functionFermer, functionButtonPhotoLouche, // fonction de poste travail
@@ -271,6 +271,11 @@ public class WindowsButton : MonoBehaviour {
             boolDiabloWarning = false;
             StartCoroutine(flou());
         }
+    }
+
+    void functionBoutonShutdown() {
+
+       Application.Quit();
     }
 
     IEnumerator flou()
