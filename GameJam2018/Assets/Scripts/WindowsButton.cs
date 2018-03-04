@@ -292,6 +292,9 @@ public class WindowsButton : MonoBehaviour {
         Invoke("pupUps", timePopUp);
         Invoke("pupUps", timePopUp * 2);
         comptPopUp = 0;
+
+        contenuScroll.AddText("Votre historique est vraiment obscure Connexion ralentie...");
+
         if (ralentir3)
         {
             player.ralentir();
@@ -338,7 +341,7 @@ public class WindowsButton : MonoBehaviour {
             virus4.SetActive(boolPart);
             virus5.SetActive(boolPart);
             virus6.SetActive(boolPart);
-
+            contenuScroll.AddText("Virus detectés ! Ils tentent de vous barrer la route !");
         }
         boolCmdPrompt = true;
         cmdPrompt.SetActive(cmdPrompt);
@@ -359,7 +362,7 @@ public class WindowsButton : MonoBehaviour {
             diabloWarning.SetActive(boolDiabloWarning);
             boolDiabloWarning = false;
             GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
-            contenuScroll.AddText("La carte graphique n'est plus détectée.");
+            contenuScroll.AddText("La carte graphique n'est plus détectée. Allez la réparer");
             // StartCoroutine(flou());
         }
     }

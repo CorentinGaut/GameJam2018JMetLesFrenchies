@@ -61,12 +61,12 @@ public class CharacterControler : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.K)){
             //debug
-            int i = 0;
-            foreach (bool b in BaseObject.itemsWellPlacedandRepared)
-            {
-                Debug.Log(i + " : " + b.ToString());
-                i++;
-            }
+            //int i = 0;
+            //foreach (bool b in BaseObject.itemsWellPlacedandRepared)
+            //{
+            //    Debug.Log(i + " : " + b.ToString());
+            //    i++;
+            //}
         }
         
 

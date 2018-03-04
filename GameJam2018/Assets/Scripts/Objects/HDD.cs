@@ -5,13 +5,16 @@ using UnityEngine;
 public class HDD : BaseObject {
 
     // Use this for initialization
-    void Start()
+    protected override void  Start()
     {
+        base.Start();
         baseHeight = gameObject.transform.position.y;
         maxHP = 500;
         isRepared = true;
         repareCooldown = 1.0f;
-        itemsWellPlacedandRepared.Add(false);
+        GameManager.itemsWellPlacedandRepared.Add(false);
+        GameManager.objects.Add(this);
+
         itemId = id;
         id++;
     }
@@ -40,11 +43,9 @@ public class HDD : BaseObject {
         if (collision.tag == "HDDEmplacement" && transform.parent == null)
         {
             isWellPlaced = true;
-            if (isRepared && listCreated)
-            {
-                itemsWellPlacedandRepared[itemId] = true;
+            GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            }
+            
         }
     }
 
@@ -53,7 +54,9 @@ public class HDD : BaseObject {
         if (collision.tag == "HDDEmplacement")
         {
             isWellPlaced = false;
-            itemsWellPlacedandRepared[itemId] = false;
+            GameManager.itemsWellPlacedandRepared[itemId] = false;
+            CheckItemList();
+
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseObject : MonoBehaviour {
 
-    static protected int id=0;
+    static public int id=0;
     public int itemId;
     public int HP;
     public bool isRepared;
@@ -16,34 +16,30 @@ public abstract class BaseObject : MonoBehaviour {
     public RepareParticleEmitter repareParticle;
     public DestroyParticleEmitter destroyParticle;
     public bool isWellPlaced;
-    static public List<bool> itemsWellPlacedandRepared;
-    static protected bool listCreated;
+
 
     private AudioSource sonRepare;
 
     private void Awake()
     {
-        listCreated = false;
-        if (!listCreated)
-        {
-            itemsWellPlacedandRepared = new List<bool>();
-            listCreated = true;
-        }
+
 
         sonRepare=GameObject.Find("Player").GetComponents<AudioSource>()[1];
     }
 
     // Use this for initialization
-    void Start () {
+    protected virtual void Start ()
+    {
 
-	}
+        //itemsWellPlacedandRepared = new List<bool>();
+    }
 	
 	// Update is called once per frame
 	protected virtual void Update () {
         if (HP < maxHP)
         {
             isRepared = false;
-            itemsWellPlacedandRepared[itemId] = false;
+            
         }
     }
 
@@ -51,7 +47,7 @@ public abstract class BaseObject : MonoBehaviour {
     {
         HP -=30;
         isRepared = false;
-        itemsWellPlacedandRepared[itemId] = false;
+        CheckItemList();
         destroyParticle.StartEmitDestroyParticle();
     }
 
@@ -71,11 +67,9 @@ public abstract class BaseObject : MonoBehaviour {
             if (HP == maxHP)
             {
                 isRepared = true;
-                if (isWellPlaced == true)
-                {
-                    itemsWellPlacedandRepared[itemId] = true;
+
                     CheckItemList();
-                }
+                
                 repareParticle.StopEmitParticle();
                 destroyParticle.StopEmitParticle();
             }              
@@ -84,16 +78,19 @@ public abstract class BaseObject : MonoBehaviour {
 
     public virtual void CheckItemList()
     {
-        for(int i=0;i<itemsWellPlacedandRepared.Count;i++)
+        GameManager.repareScore = 0;
+        GameManager.totalHp = 0;
+        for(int i=0;i< GameManager.itemsWellPlacedandRepared.Count;i++)
         {
-            //Debug.Log(i +" : "+ itemsWellPlacedandRepared[i].ToString() + " "+Time.time);
-            if (itemsWellPlacedandRepared[i] == false)
+            GameManager.totalHp += GameManager.objects[i].maxHP;
+            //Debug.Log(objects[i].maxHP);
+            if (GameManager.itemsWellPlacedandRepared[i] == true)
             {
-                Debug.Log(i);
-                return;
+                //Debug.Log(i);
+                GameManager.repareScore += GameManager.objects[i].HP;
             }        
         }
-        Debug.Log("fdp");
+
     }
 
     IEnumerator RepareTimer()
@@ -101,5 +98,10 @@ public abstract class BaseObject : MonoBehaviour {
         repareParticle.StartEmitParticle();
         yield return new WaitForSeconds(repareCooldown);
         repareParticle.StopEmitParticle();
+    }
+
+    public static int GetScore()
+    {
+        return GameManager.repareScore / GameManager.totalHp;
     }
 }

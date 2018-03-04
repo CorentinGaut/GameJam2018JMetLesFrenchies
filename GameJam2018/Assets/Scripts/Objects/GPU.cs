@@ -8,14 +8,17 @@ public class GPU : BaseObject {
     public GameObject nVidio;
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         baseHeight = gameObject.transform.position.y;
         maxHP = 350;
         isRepared = true;
         repareCooldown = 1.0f;
         isGPURepared = false;
-        itemsWellPlacedandRepared.Add(false);
+        GameManager.itemsWellPlacedandRepared.Add(false);
+        GameManager.objects.Add(this);
+
         itemId = id;
         id++;
     }
@@ -54,11 +57,10 @@ public class GPU : BaseObject {
         if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
             isWellPlaced = true;
-            if (isRepared && listCreated)
-            {
-                itemsWellPlacedandRepared[itemId]=true;
+
+            GameManager.itemsWellPlacedandRepared[itemId]=true;
                 CheckItemList();
-            }
+            
         }
     }
 
@@ -67,7 +69,9 @@ public class GPU : BaseObject {
         if (collision.tag == "GPUEmplacement")
         {
             isWellPlaced = false;
-            itemsWellPlacedandRepared[itemId] = false;
+            GameManager.itemsWellPlacedandRepared[itemId] = false;
+            CheckItemList();
+
         }
     }
 }
