@@ -51,7 +51,7 @@ public class buttonClick : MonoBehaviour {
         sound.Play();
         Debug.Log("Test bouton User1 réussi !");
         //SceneManager.LoadScene("testWindows");
-        SceneManager.LoadScene("New Scene");
+        SceneManager.LoadScene("scene bordel");
     }
 
     void functionButtonUser2()
