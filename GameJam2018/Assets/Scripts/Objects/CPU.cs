@@ -38,15 +38,12 @@ public class CPU : BaseObject {
     {
         if (collision.tag == "CPUEmplacement" && transform.parent == null)
         {
-            Debug.Log("CPU est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("CPU est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }

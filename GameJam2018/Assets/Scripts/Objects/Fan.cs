@@ -39,15 +39,12 @@ public class Fan : BaseObject {
     {
         if (collision.tag == "FaneEmplacement" && transform.parent == null)
         {
-            Debug.Log("Fane est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("Fan est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }

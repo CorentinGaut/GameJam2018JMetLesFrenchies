@@ -38,15 +38,12 @@ public class GPU : BaseObject {
     {
         if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
-            Debug.Log("GPU est au bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("GPU est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }

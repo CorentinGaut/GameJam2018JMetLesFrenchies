@@ -39,15 +39,12 @@ public class Screw : BaseObject {
     {
         if (collision.tag == "VisEmplacement" && transform.parent == null)
         {
-            Debug.Log("Vis est qu bon endroit");
 
             if (HP == maxHP)
             {
-                Debug.Log("Vis est au bon endroit, objet réparé");
             }
             else
             {
-                Debug.Log("Reparer l'objet");
             }
 
         }
