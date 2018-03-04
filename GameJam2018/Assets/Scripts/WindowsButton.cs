@@ -31,11 +31,15 @@ public class WindowsButton : MonoBehaviour {
     public float coolDownPng;
     private bool allowClickPhoto;
 
+    private bool ralentir1, ralentir2, ralentir3;
+
     // Player
     private CharacterControler player;
 
     //Son
     private AudioSource audioSource;
+
+    private TextScrollview contenuScroll;
 
     // Use this for initialization
     void Start () {
@@ -60,8 +64,13 @@ public class WindowsButton : MonoBehaviour {
         panelFlou.SetActive(false);
 
         allowClickPhoto = true;
+        ralentir1 = true;
+        ralentir2 = true;
+        ralentir3 = true;
 
         player = GameObject.Find("Player").GetComponent<CharacterControler>();
+
+        contenuScroll = GameObject.Find("Content").GetComponent<TextScrollview>();
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -160,6 +169,7 @@ public class WindowsButton : MonoBehaviour {
             boolBeauMec = false;
             // Liver le jeu pour stun l'anti virus
             player.Stun();
+            contenuScroll.AddText("Ce fichier est corrompu. Analyse de l'anti-virus");
             StartCoroutine(coolDown());
         }
     }
@@ -178,7 +188,11 @@ public class WindowsButton : MonoBehaviour {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
-        player.ralentir();
+        if (ralentir1)
+        {
+            player.ralentir();
+            ralentir1 = false;
+        }
     }
 
     void functionFermer()
@@ -205,7 +219,11 @@ public class WindowsButton : MonoBehaviour {
                 boolGoogle = true;
             }
         }
-        player.ralentir();
+        if (ralentir2)
+        {
+            player.ralentir();
+            ralentir2 = false;
+        }
     }
 
     void functionButtonRecherche()
@@ -215,7 +233,11 @@ public class WindowsButton : MonoBehaviour {
         Invoke("pupUps", timePopUp);
         Invoke("pupUps", timePopUp * 2);
         comptPopUp = 0;
-        player.ralentir();
+        if (ralentir3)
+        {
+            player.ralentir();
+            ralentir3 = false;
+        }
     }
 
     void pupUps()
@@ -265,7 +287,8 @@ public class WindowsButton : MonoBehaviour {
             diabloWarning.SetActive(boolDiabloWarning);
             boolDiabloWarning = false;
             GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
-           // StartCoroutine(flou());
+            contenuScroll.AddText("La carte graphique n'est plus détectée.");
+            // StartCoroutine(flou());
         }
     }
 

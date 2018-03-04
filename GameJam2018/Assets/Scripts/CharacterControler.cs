@@ -135,7 +135,11 @@ public class CharacterControler : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (direction.magnitude > 0.1)
+        if (isStuned)
+        {
+            anim.SetBool("isMoving", false);
+        }
+        if (direction.magnitude > 0.1 && !isStuned)
         {
             
             anim.SetBool("isMoving", true);
