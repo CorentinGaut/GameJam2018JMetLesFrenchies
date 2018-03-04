@@ -228,4 +228,9 @@ public class CharacterControler : MonoBehaviour
         yield return new WaitForSeconds(dureeRalentissement);
         tweakRalentissement=1f;
     }
+     public void StunFinDeJeu(){
+        isStuned=true;
+        direction.x=0;
+        direction.y=0;
+    }
 }
