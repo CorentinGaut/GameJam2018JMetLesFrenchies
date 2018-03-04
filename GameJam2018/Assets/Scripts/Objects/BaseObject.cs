@@ -15,6 +15,8 @@ public abstract class BaseObject : MonoBehaviour {
     public float baseHeight;
     public RepareParticleEmitter repareParticle;
     public DestroyParticleEmitter destroyParticle;
+    public CorrectLocationParticleEmitter locationParticle;
+
     public bool isWellPlaced;
 
 
@@ -83,14 +85,15 @@ public abstract class BaseObject : MonoBehaviour {
         for(int i=0;i< GameManager.itemsWellPlacedandRepared.Count;i++)
         {
             GameManager.totalHp += GameManager.objects[i].maxHP;
-            //Debug.Log(objects[i].maxHP);
+            Debug.Log(GameManager.objects[i].maxHP);
             if (GameManager.itemsWellPlacedandRepared[i] == true)
             {
                 //Debug.Log(i);
                 GameManager.repareScore += GameManager.objects[i].HP;
             }        
         }
-
+        Debug.Log(GameManager.totalHp);
+        Debug.Log(GameManager.repareScore);
     }
 
     IEnumerator RepareTimer()
@@ -102,6 +105,18 @@ public abstract class BaseObject : MonoBehaviour {
 
     public static int GetScore()
     {
+        GameManager.repareScore = 0;
+        GameManager.totalHp = 0;
+        for (int i = 0; i < GameManager.itemsWellPlacedandRepared.Count; i++)
+        {
+            GameManager.totalHp += GameManager.objects[i].maxHP;
+            Debug.Log(GameManager.objects[i].maxHP);
+            if (GameManager.itemsWellPlacedandRepared[i] == true)
+            {
+                //Debug.Log(i);
+                GameManager.repareScore += GameManager.objects[i].HP;
+            }
+        }
         return GameManager.repareScore / GameManager.totalHp;
     }
 }

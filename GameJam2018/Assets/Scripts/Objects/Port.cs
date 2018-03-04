@@ -47,7 +47,8 @@ public class Port : BaseObject {
 
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -59,6 +60,7 @@ public class Port : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }

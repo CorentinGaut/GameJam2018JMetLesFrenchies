@@ -47,7 +47,8 @@ public class CPU : BaseObject {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -59,6 +60,7 @@ public class CPU : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }
