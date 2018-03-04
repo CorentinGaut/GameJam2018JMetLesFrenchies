@@ -120,6 +120,7 @@ public class WindowsButton : MonoBehaviour {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
         }
+        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
     }
 
     void functionFermer()
@@ -146,6 +147,7 @@ public class WindowsButton : MonoBehaviour {
                 boolGoogle = true;
             }
         }
+        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
     }
 
     void functionButtonRecherche()
@@ -155,6 +157,7 @@ public class WindowsButton : MonoBehaviour {
         Invoke("pupUps", timePopUp);
         Invoke("pupUps", timePopUp * 2);
         comptPopUp = 0;
+        GameObject.Find("Player").GetComponent<CharacterControler>().ralentir();
     }
 
     void pupUps()
