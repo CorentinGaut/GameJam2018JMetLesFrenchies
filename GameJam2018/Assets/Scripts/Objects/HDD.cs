@@ -8,16 +8,15 @@ public class HDD : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-        HP = 500;
         maxHP = 500;
         isRepared = true;
         repareCooldown = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
+        base.Update();
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
     }
@@ -33,18 +32,20 @@ public class HDD : BaseObject {
     }
 
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "HDDEmplacement" && transform.parent == null)
         {
+            isWellPlaced = true;
+        }
+    }
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "HDDEmplacement")
+        {
 
+            isWellPlaced = false;
         }
     }
 }

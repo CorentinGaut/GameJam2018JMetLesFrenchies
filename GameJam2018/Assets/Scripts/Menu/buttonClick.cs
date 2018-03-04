@@ -11,7 +11,7 @@ public class buttonClick : MonoBehaviour {
     private UnityAction[] tabFonctions;
     private GameObject dlcWindows , tutoWindow;
     private bool boolWindows , boolTutoWindows;
-
+    private AudioSource sound;
 
 
     // Use this for initialization
@@ -24,6 +24,7 @@ public class buttonClick : MonoBehaviour {
         for (int i = 0; i < listButtons.Length; i++)
         {
             listButtons[i].onClick.AddListener(tabFonctions[i]);
+            listButtons[i].onClick.AddListener(playClick);
         }
         Debug.Log(listButtons.Length);
 
@@ -34,6 +35,10 @@ public class buttonClick : MonoBehaviour {
         tutoWindow = this.transform.Find("TutoLayout").gameObject;
         boolTutoWindows = false;
         tutoWindow.SetActive(boolTutoWindows);
+
+        //init sound
+
+        sound = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -43,6 +48,7 @@ public class buttonClick : MonoBehaviour {
 
     void functionButtonUser1()
     {
+        sound.Play();
         Debug.Log("Test bouton User1 réussi !");
         //SceneManager.LoadScene("testWindows");
         SceneManager.LoadScene("New Scene");
@@ -76,6 +82,10 @@ public class buttonClick : MonoBehaviour {
     void functionButtonFermer()
     {
         Debug.Log("Bouton fermer ne doit rien renvoyer !");
+    }
+
+    void playClick() {
+        sound.Play();
     }
 
 }

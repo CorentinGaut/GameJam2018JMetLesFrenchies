@@ -8,15 +8,15 @@ public class Alimentation : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-        HP = 400;
         maxHP = 400;
         isRepared = true;
         repareCooldown = 1.0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
@@ -32,18 +32,23 @@ public class Alimentation : BaseObject {
         base.Repare();
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "AlimentationEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
-            
+            isWellPlaced = true;
+
+
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "AlimentationEmplacement")
+        {
+
+            isWellPlaced = false;
         }
     }
 }

@@ -33,13 +33,17 @@ public class WindowsButton : MonoBehaviour {
     private GameObject virus1, virus2, virus3, virus4, virus5, virus6;
     private bool boolPart; 
 
+    
+
     //Son
-    private AudioSource audioSource;
+    private AudioSource audioSource , audioBoot ,audioError;
 
     // Use this for initialization
     void Start () {
+
+
         UnityAction[] tabFonctions = { functionButtonDemarrer, functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, //fonction du bureau
-                                        functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
+                                        functionBoutonShutdown,functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
                                         functionFermer, functionButtonPhotoLouche, // fonction de poste travail
@@ -73,8 +77,13 @@ public class WindowsButton : MonoBehaviour {
         boolGoogle2 = false;
         google2.SetActive(boolGoogle2);
 
-        //son
-        audioSource=GetComponent<AudioSource>();
+        //sons
+        audioSource=GetComponents<AudioSource>()[0];
+        audioBoot = GetComponents<AudioSource>()[1];
+        audioError = GetComponents<AudioSource>()[2];
+        audioBoot.Play();
+
+
 
         // Poste de Travail Initialisation
         posteTravail = this.transform.Find("PostTravail").gameObject;
@@ -231,6 +240,8 @@ public class WindowsButton : MonoBehaviour {
 
     void pupUps()
     {
+        //son ici
+        audioError.Play();
         Instantiate(listPopUps[comptPopUp], this.transform);
         comptPopUp++;
     }
@@ -286,6 +297,11 @@ public class WindowsButton : MonoBehaviour {
             boolDiabloWarning = false;
             StartCoroutine(flou());
         }
+    }
+
+    void functionBoutonShutdown() {
+        Debug.Log("SHUTDOWN");
+       Application.Quit();
     }
 
     IEnumerator flou()
