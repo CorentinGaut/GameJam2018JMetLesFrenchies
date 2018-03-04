@@ -21,10 +21,6 @@ public class TextScrollview : MonoBehaviour {
 		//AddText("test3");
 		activeItem=null;
 		itemToggle=true;
-		var tmp= (RectTransform)this.transform.parent;
-		var tmpPos=tmp.position;
-		tmpPos.y=0;
-		this.transform.parent.position=tmpPos;
 	}
 	
 	// Update is called once per frame
