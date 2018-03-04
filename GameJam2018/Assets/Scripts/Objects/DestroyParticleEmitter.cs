@@ -20,6 +20,8 @@ public class DestroyParticleEmitter : MonoBehaviour {
         if (!GetComponentInParent<BaseObject>().isRepared)
         {
             destroyedParticle.Play();
+        }else if (destroyedParticle.isEmitting){
+            destroyedParticle.Stop();
         }
     }
 
@@ -31,5 +33,6 @@ public class DestroyParticleEmitter : MonoBehaviour {
     public void StopEmitParticle()
     {
         destroyedParticle.Stop();
+        destroyedParticle.Clear();
     }
 }

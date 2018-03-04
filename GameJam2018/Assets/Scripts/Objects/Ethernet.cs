@@ -49,7 +49,6 @@ public class Ethernet : BaseObject {
             GameManager.itemsWellPlacedandRepared[itemId] = true;
             CheckItemList();
             locationParticle.StartEmitLocationParticle();
-
         }
     }
 
