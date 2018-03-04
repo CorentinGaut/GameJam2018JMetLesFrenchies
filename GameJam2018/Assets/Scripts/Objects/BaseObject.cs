@@ -29,7 +29,7 @@ public abstract class BaseObject : MonoBehaviour {
 
     public virtual void Destroy()
     {
-        HP = 0;
+        HP -=30;
         isRepared = false;
         destroyParticle.StartEmitDestroyParticle();
     }
