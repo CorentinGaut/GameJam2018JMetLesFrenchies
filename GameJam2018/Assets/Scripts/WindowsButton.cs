@@ -363,7 +363,7 @@ public class WindowsButton : MonoBehaviour {
             boolDiabloWarning = false;
             GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
             contenuScroll.AddText("La carte graphique n'est plus détectée. Allez la réparer");
-            // StartCoroutine(flou());
+            StartCoroutine(flou());
         }
     }
 
