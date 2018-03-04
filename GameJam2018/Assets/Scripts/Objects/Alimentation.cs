@@ -8,7 +8,7 @@ public class Alimentation : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-        maxHP = 400;
+        maxHP = 40;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);
@@ -45,7 +45,8 @@ public class Alimentation : BaseObject {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -58,6 +59,7 @@ public class Alimentation : BaseObject {
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
 
+            locationParticle.StopEmitParticle();
 
         }
     }

@@ -12,7 +12,7 @@ public class GPU : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 350;
+        maxHP = 35;
         isRepared = true;
         repareCooldown = 1.0f;
         isGPURepared = false;
@@ -60,7 +60,8 @@ public class GPU : BaseObject {
 
             GameManager.itemsWellPlacedandRepared[itemId]=true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -71,6 +72,7 @@ public class GPU : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }

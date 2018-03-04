@@ -11,7 +11,7 @@ public class CPU : BaseObject {
         base.Start();
         baseHeight = gameObject.transform.position.y;
 
-        maxHP = 250;
+        maxHP = 25;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);
@@ -47,7 +47,8 @@ public class CPU : BaseObject {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
                 CheckItemList();
-            
+            locationParticle.StartEmitLocationParticle();
+
         }
     }
 
@@ -59,6 +60,7 @@ public class CPU : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }

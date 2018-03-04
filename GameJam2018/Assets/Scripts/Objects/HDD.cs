@@ -9,7 +9,7 @@ public class HDD : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 500;
+        maxHP = 50;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);
@@ -44,8 +44,8 @@ public class HDD : BaseObject {
         {
             isWellPlaced = true;
             GameManager.itemsWellPlacedandRepared[itemId] = true;
-                CheckItemList();
-            
+            CheckItemList();
+            locationParticle.StartEmitLocationParticle();
         }
     }
 
@@ -56,6 +56,7 @@ public class HDD : BaseObject {
             isWellPlaced = false;
             GameManager.itemsWellPlacedandRepared[itemId] = false;
             CheckItemList();
+            locationParticle.StopEmitParticle();
 
         }
     }
