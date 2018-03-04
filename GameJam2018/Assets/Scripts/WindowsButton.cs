@@ -13,6 +13,7 @@ public class WindowsButton : MonoBehaviour {
     public GameObject[] listPopUps;
     private int comptPopUp;
     public float timePopUp;
+    public GameObject panelFlou;
     private GameObject google;
     private bool boolGoogle;
     private GameObject google2;
@@ -21,8 +22,16 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPosteTravail;
     private GameObject diablo;
     private bool boolDiablo;
+    private GameObject diabloWarning;
+    private bool boolDiabloWarning;
+    private GameObject photoWindow;
+    private bool boolPhotoWindow;
+    private GameObject beauMec;
+    private bool boolBeauMec;
+    public float coolDownPng;
+    private bool allowClickPhoto;
 
-//Son
+    //Son
     private AudioSource audioSource;
 
     // Use this for initialization
@@ -31,8 +40,11 @@ public class WindowsButton : MonoBehaviour {
                                         functionButtonPosteTravail, functionButtonInternet, functionButtonDiablo, functionButtonInvCommande, functionButtonTousProgs, // fonction de demarrer
                                         functionFermer, functionButtonChance, functionButtonRecherche, // fonction de google1
                                         functionFermer, functionPrecedent,// fonction de google2
-                                        functionFermer, // fonction de poste travail
-                                        functionFermer}; // fonction de diablo
+                                        functionFermer, functionButtonPhotoLouche, // fonction de poste travail
+                                        functionFermer, functionButtonPlayDiablo, // fonction de diablo
+                                        functionFermer, // fonction de diablo Warning
+                                        functionFermer, functionPrecedent, functionButtonBeauMec, // fonction de PhotoWindow
+                                        functionFermer}; // fonction de BeauMec
 
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
@@ -41,6 +53,10 @@ public class WindowsButton : MonoBehaviour {
             listButtons[i].onClick.AddListener(playClick);
         }
         Debug.Log(listButtons.Length);
+
+        panelFlou.SetActive(false);
+
+        allowClickPhoto = true;
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -68,6 +84,20 @@ public class WindowsButton : MonoBehaviour {
         boolDiablo = false;
         diablo.SetActive(boolDiablo);
 
+        // Diablo Warning Initialisation
+        diabloWarning = this.transform.Find("Warning").gameObject;
+        boolDiabloWarning = false;
+        diabloWarning.SetActive(boolDiabloWarning);
+
+        // PhotoWindow Initialisation
+        photoWindow = this.transform.Find("PhotoWindow").gameObject;
+        boolPhotoWindow = false;
+        photoWindow.SetActive(boolPhotoWindow);
+
+        // BeauMec.png Initialisation
+        beauMec = this.transform.Find("BeauMec").gameObject;
+        boolBeauMec = false;
+        beauMec.SetActive(boolBeauMec);
     }
 	
 	// Update is called once per frame
@@ -103,6 +133,28 @@ public class WindowsButton : MonoBehaviour {
         {
             boolDemarrer = false;
             colomneDemarrer.SetActive(boolDemarrer);
+        }
+    }
+
+    void functionButtonPhotoLouche()
+    {
+        if (!boolPhotoWindow)
+        {
+            boolPhotoWindow = true;
+            photoWindow.SetActive(boolPhotoWindow);
+            boolPhotoWindow = false;
+        }
+    }
+
+    void functionButtonBeauMec()
+    {
+        if (!boolBeauMec && allowClickPhoto)
+        {
+            boolBeauMec = true;
+            beauMec.SetActive(boolBeauMec);
+            boolBeauMec = false;
+            // Liver le jeu pour stun l'anti virus
+            StartCoroutine(coolDown());
         }
     }
 
@@ -195,6 +247,39 @@ public class WindowsButton : MonoBehaviour {
     void functionButtonTousProgs()
     {
         Debug.Log("Test bouton Tous les progs reussi !");
+    }
+
+    void functionButtonPlayDiablo()
+    {
+        Debug.Log("Test bouton Tous les progs reussi !");
+        if (!boolDiabloWarning) // Afficher Demarrer
+        {
+            // Lier le jeu avec une fonction qui casse la carte graphique
+            boolDiabloWarning = true;
+            diabloWarning.SetActive(boolDiabloWarning);
+            boolDiabloWarning = false;
+            StartCoroutine(flou());
+        }
+    }
+
+    IEnumerator flou()
+    {
+        panelFlou.SetActive(true);
+        print(Time.time);
+        yield return new WaitForSeconds(5);
+        print(Time.time);
+        panelFlou.SetActive(false);
+
+    }
+
+    IEnumerator coolDown()
+    {
+        allowClickPhoto = false;
+        print(Time.time);
+        yield return new WaitForSeconds(5);
+        print(Time.time);
+        allowClickPhoto = true;
+
     }
 
     void playClick(){
