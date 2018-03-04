@@ -13,6 +13,10 @@ public class DestroyParticleEmitter : MonoBehaviour {
         box = transform.parent.GetComponent<BoxCollider>();
         var dsh = destroyedParticle.shape;
         dsh.scale = new Vector3(box.size.x,box.size.z,box.size.y);
+    }
+
+    private void Update()
+    {
         if (!GetComponentInParent<BaseObject>().isRepared)
         {
             destroyedParticle.Play();

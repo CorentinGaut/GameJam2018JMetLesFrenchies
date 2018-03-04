@@ -12,7 +12,7 @@ public class CPU : BaseObject {
 
         HP = 250;
         maxHP = 250;
-        isRepared = false;
+        isRepared = true;
         repareCooldown = 1.0f;
 	}
 	
