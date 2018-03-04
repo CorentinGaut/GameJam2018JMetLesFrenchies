@@ -5,18 +5,24 @@ using UnityEngine;
 public class Ethernet : BaseObject {
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         baseHeight = gameObject.transform.position.y;
-        HP = 400;
-        maxHP = 400;
+        maxHP = 200;
         isRepared = true;
         repareCooldown = 1.0f;
+        GameManager.itemsWellPlacedandRepared.Add(false);
+        GameManager.objects.Add(this);
+
+        itemId = id;
+        id++;
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
 
         if (repareCooldown > 0)
             repareCooldown -= Time.deltaTime;
@@ -32,18 +38,30 @@ public class Ethernet : BaseObject {
         base.Repare();
     }
 
-    private void OnTriggerStay(Collider collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "EthernetEmplacement" && transform.parent == null)
         {
 
-            if (HP == maxHP)
-            {
-            }
-            else
-            {
-            }
-            
+            isWellPlaced = true;
+
+            GameManager.itemsWellPlacedandRepared[itemId] = true;
+            CheckItemList();
+            locationParticle.StartEmitLocationParticle();
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.tag == "EthernetEmplacement")
+        {
+
+            isWellPlaced = false;
+            GameManager.itemsWellPlacedandRepared[itemId] = false;
+            CheckItemList();
+            locationParticle.StopEmitParticle();
+
         }
     }
 }
