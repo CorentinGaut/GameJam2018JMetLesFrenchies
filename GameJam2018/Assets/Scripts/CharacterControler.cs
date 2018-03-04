@@ -92,7 +92,7 @@ public class CharacterControler : MonoBehaviour
         if(closeObjects.Count>0)
         {
             foreach(BaseObject go in closeObjects)
-            {                    Debug.Log(go.gameObject.name);
+            {  
                 float dist = (go.transform.position-pos).sqrMagnitude;
                 if(dist<minDistObject)
                 {
