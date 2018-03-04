@@ -167,7 +167,9 @@ public class CharacterControler : MonoBehaviour
             
             anim.SetBool("isMoving", true);
             //startsound
-            steps.Play();
+            if(!steps.isPlaying){
+                steps.Play();
+            }
 
             if (direction.magnitude > 1)
                 direction.Normalize();
