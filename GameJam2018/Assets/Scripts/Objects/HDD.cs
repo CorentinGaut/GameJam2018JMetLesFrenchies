@@ -9,7 +9,7 @@ public class HDD : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 50;
+        maxHP = 35;
         isRepared = true;
         repareCooldown = 1.0f;
         GameManager.itemsWellPlacedandRepared.Add(false);
