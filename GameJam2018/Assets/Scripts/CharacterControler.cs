@@ -60,7 +60,9 @@ public class CharacterControler : MonoBehaviour
         if (Input.GetButton("Repare"))
         {
             anim.SetBool("isReparing", true);
-            closestObject.Repare();
+            if(closestObject!=null){
+                closestObject.Repare();
+            }
             StartCoroutine(WaitAnim());
         }
 
