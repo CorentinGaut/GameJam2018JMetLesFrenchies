@@ -207,7 +207,7 @@ public class CharacterControler : MonoBehaviour
 
     public void ralentir(){
         //modemsound
-        modem.Play();
+       // modem.Play();
         tweakRalentissement=vitesseRalenti;
         contenu.AddText("Ie utilise trop de processeur, ralentissement de l'ordinateur !");
         StartCoroutine(finRalentissement());    
