@@ -34,13 +34,8 @@ public class CharacterControler : MonoBehaviour
         isStuned=false;
         tweakRalentissement=1f;
         contenu=GameObject.Find("Content").GetComponent<TextScrollview>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        //sons
+           //sons
 
         //sons
         steps = GetComponents<AudioSource>()[0];
@@ -48,6 +43,13 @@ public class CharacterControler : MonoBehaviour
         pop = GetComponents<AudioSource>()[2];
         lift = GetComponents<AudioSource>()[3];
         modem = GetComponents<AudioSource>()[4];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+     
 
         if (!isStuned){
             direction.x = Input.GetAxis("Horizontal");
