@@ -12,7 +12,7 @@ public class GPU : BaseObject {
     {
         base.Start();
         baseHeight = gameObject.transform.position.y;
-        maxHP = 350;
+        maxHP = 35;
         isRepared = true;
         repareCooldown = 1.0f;
         isGPURepared = false;

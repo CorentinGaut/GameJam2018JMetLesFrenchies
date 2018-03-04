@@ -62,7 +62,7 @@ public abstract class BaseObject : MonoBehaviour {
     {
         if (repareCooldown <= 0 && !isRepared)
         {
-            HP += 10;
+            HP += 5;
             repareCooldown = 1;
             sonRepare.Play();
             StartCoroutine("RepareTimer");
