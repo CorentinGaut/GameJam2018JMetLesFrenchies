@@ -6,13 +6,13 @@ public class CharacterControler : MonoBehaviour
 {
 
     Vector3 direction;
-    public List<BaseObject> closeObjects;
-    public BaseObject closestObject;
+    public List<GameObject> closeObjects;
+    public GameObject closestObject;
     Vector3 pos;
     float minDistObject;
-    BaseObject pickedUpObject;
+    GameObject pickedUpObject;
     Vector3 pickedUpItemPos;
-
+    Animator anim;
     [Header("Sort")]
     public float stunTime;
     private float tweakRalentissement;
@@ -25,7 +25,8 @@ public class CharacterControler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        closeObjects = new List<BaseObject>();
+        anim = GetComponent<Animator>();
+        closeObjects = new List<GameObject>();
         direction = new Vector3(0,0,0);
         minDistObject = 3000;
         isStuned=false;
@@ -58,27 +59,28 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Repare"))
         {
-            closestObject.Repare();
-            Debug.Log("ENFONCE LA");
+            anim.SetBool("isReparing", true);
+            StartCoroutine(WaitAnim());
+            closestObject.GetComponent<BaseObject>().Repare();
         }
 
         if(Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log("blub");
-            closestObject.Destroy();
+            closestObject.GetComponent<BaseObject>().Destroy();
         }
 
         if (Input.GetButtonDown("RotateD"))
         {
             if (pickedUpObject == null)
-                closestObject.Rotate(45);
+                closestObject.GetComponent<BaseObject>().Rotate(45);
             Debug.Log("droite");
         }
 
         if (Input.GetButtonDown("RotateG"))
         {
             if(pickedUpObject == null)
-            closestObject.Rotate(-45);
+            closestObject.GetComponent<BaseObject>().Rotate(-45);
             Debug.Log("gauche");
         }
 
@@ -91,7 +93,7 @@ public class CharacterControler : MonoBehaviour
         pos = gameObject.transform.position;
         if(closeObjects.Count>0)
         {
-            foreach(BaseObject go in closeObjects)
+            foreach(GameObject go in closeObjects)
             {                    Debug.Log(go.gameObject.name);
                 float dist = (go.transform.position-pos).sqrMagnitude;
                 if(dist<minDistObject)
@@ -105,43 +107,58 @@ public class CharacterControler : MonoBehaviour
         }
     }
 
+    IEnumerator WaitAnim()
+    {
+        yield return new WaitForSeconds(1.2f);
+        anim.SetBool("isReparing", false);
+    }
+
     private void PickUp()
     {
         if(closestObject!=null&& pickedUpObject==null)
         {
+            anim.SetBool("isWearing", true);
             pickedUpObject = closestObject;
             closestObject.transform.SetParent(gameObject.transform);
             closestObject.transform.localEulerAngles = Vector3.zero;
-            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, -((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
+            closestObject.transform.localPosition = new Vector3(0, closestObject.transform.position.y, /*-((closestObject.transform.localScale.z/2f)+1)*/-((closestObject.GetComponent<BoxCollider>().size.z/2)+1) );
         }
         else if(pickedUpObject!=null)
         {
+            anim.SetBool("isWearing", false);
             pickedUpObject.transform.SetParent(null);
-            pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.baseHeight, pickedUpObject.transform.position.z);
+            pickedUpObject.transform.position = new Vector3(pickedUpObject.transform.position.x, closestObject.GetComponent<BaseObject>().baseHeight, pickedUpObject.transform.position.z);
             pickedUpObject = null;
         }
     }
+
 
     void FixedUpdate()
     {
         if (direction.magnitude > 0.1)
         {
+            
+            anim.SetBool("isMoving", true);
             if (direction.magnitude > 1)
                 direction.Normalize();
-            this.transform.position += direction/3* tweakRalentissement;
+            this.transform.position += direction/3* tweakRalentissement*0.5f;
             float sign = (direction.z > 0) ? 1.0f : -1.0f;
-            transform.rotation = Quaternion.Euler(0,  270 - Vector3.Angle(Vector3.right, direction) * sign,0);
+            transform.rotation = Quaternion.Euler(0,  90 - Vector3.Angle(Vector3.right, direction) * sign,0);
+        }
+        if (direction.magnitude == 0)
+        {
+            anim.SetBool("isMoving", false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        closeObjects.Add(other.gameObject.GetComponent<BaseObject>());
+        closeObjects.Add(other.gameObject);
     }
     private void OnTriggerExit(Collider other)
     {
-        closeObjects.Remove(other.gameObject.GetComponent<BaseObject>());
+        closeObjects.Remove(other.gameObject);
         if(closeObjects.Count==0)
         {
             closestObject = null;
