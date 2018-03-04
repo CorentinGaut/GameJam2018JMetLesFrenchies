@@ -8,7 +8,7 @@ public class Screw : BaseObject {
     // Use this for initialization
     void Start()
     {
-        maxHP = 1000;
+        maxHP = 10;
         isRepared = true;
         repareCooldown = 1.0f;
         baseHeight = gameObject.transform.position.y;
