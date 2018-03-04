@@ -40,7 +40,6 @@ public class TimerMorton : MonoBehaviour {
 
     void instentiateBlueBar()
     {
-        Debug.Log(compt);
         tabBlockClone[compt].gameObject.SetActive(true);
         compt++;
         if (compt == tabBlockClone.Length)

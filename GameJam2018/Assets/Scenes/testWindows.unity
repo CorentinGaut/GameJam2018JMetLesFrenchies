@@ -829,7 +829,7 @@ MonoBehaviour:
   - {fileID: 1406318954606656, guid: d1b8bf84b4bdf3241a32459b6b6dc76a, type: 2}
   timePopUp: 0.3
   panelFlou: {fileID: 873109845}
-  coolDownPng: 2
+  coolDownPng: 5
 --- !u!82 &117800103
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 934140384}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9998652
+  m_Size: 0.9997001
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9261,7 +9261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000012807899}
+  m_AnchoredPosition: {x: 0, y: -0.000034327444}
   m_SizeDelta: {x: 0, y: 358.07}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1859829008

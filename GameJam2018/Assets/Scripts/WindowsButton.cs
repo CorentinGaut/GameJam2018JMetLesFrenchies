@@ -29,6 +29,7 @@ public class WindowsButton : MonoBehaviour {
     private GameObject beauMec;
     private bool boolBeauMec;
     public float coolDownPng;
+    private bool allowClickPhoto;
 
     //Son
     private AudioSource audioSource;
@@ -55,7 +56,7 @@ public class WindowsButton : MonoBehaviour {
 
         panelFlou.SetActive(false);
 
-      //  timeStamp = Time.time + coolDownPng;
+        allowClickPhoto = true;
 
         // Colomne Démarrer Initialisation
         colomneDemarrer = this.transform.Find("colomneDemarrer").gameObject;
@@ -147,15 +148,13 @@ public class WindowsButton : MonoBehaviour {
 
     void functionButtonBeauMec()
     {
-        if(Time.time + coolDownPng <= Time.time)
+        if (!boolBeauMec && allowClickPhoto)
         {
-            if (!boolBeauMec)
-            {
-                boolBeauMec = true;
-                beauMec.SetActive(boolBeauMec);
-                boolBeauMec = false;
-                // Liver le jeu pour stun l'anti virus
-            }
+            boolBeauMec = true;
+            beauMec.SetActive(boolBeauMec);
+            boolBeauMec = false;
+            // Liver le jeu pour stun l'anti virus
+            StartCoroutine(coolDown());
         }
     }
 
@@ -267,6 +266,16 @@ public class WindowsButton : MonoBehaviour {
         yield return new WaitForSeconds(5);
         print(Time.time);
         panelFlou.SetActive(false);
+
+    }
+
+    IEnumerator coolDown()
+    {
+        allowClickPhoto = false;
+        print(Time.time);
+        yield return new WaitForSeconds(5);
+        print(Time.time);
+        allowClickPhoto = true;
 
     }
 
