@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class WindowsButton : MonoBehaviour {
 
@@ -28,6 +30,14 @@ public class WindowsButton : MonoBehaviour {
     private bool boolPhotoWindow;
     private GameObject beauMec;
     private bool boolBeauMec;
+ 
+    private GameObject victoryPop;
+    private bool boolVictoryPop;
+    private GameObject forceUpdate;
+    private bool boolForceUpdate;
+
+    public bool conditionVictoire;
+
     public float coolDownPng;
     private bool allowClickPhoto;
 
@@ -51,8 +61,10 @@ public class WindowsButton : MonoBehaviour {
                                         functionFermer, functionButtonPlayDiablo, // fonction de diablo
                                         functionFermer, // fonction de diablo Warning
                                         functionFermer, functionPrecedent, functionButtonBeauMec, // fonction de PhotoWindow
-                                        functionFermer}; // fonction de BeauMec
-
+                                        functionFermer, // fonction de BeauMec
+                                        functionButtonAcceptUpdate, functionButtonRefuseUpdate, // fonction de VictoryPopUp
+                                        functionButtonAcceptUpdate}; // fonction de ForceUpdate
+                                        
         listButtons = this.GetComponentsInChildren<Button>();
         for (int i = 0; i < listButtons.Length; i++)
         {
@@ -112,11 +124,26 @@ public class WindowsButton : MonoBehaviour {
         beauMec = this.transform.Find("BeauMec").gameObject;
         boolBeauMec = false;
         beauMec.SetActive(boolBeauMec);
+
+        
+        // VictoryPopUp Initialisation
+        victoryPop = this.transform.Find("VictoryPopUp").gameObject;
+        boolVictoryPop = false;
+        victoryPop.SetActive(boolVictoryPop);
+
+        // ForceUpdate Initialisation
+        forceUpdate = this.transform.Find("ForceUpdate").gameObject;
+        boolForceUpdate = false;
+        forceUpdate.SetActive(boolForceUpdate);
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (conditionVictoire)
+        {
+            functionVictoire(); // Affiche PopUp Update Fenetre10
+        }
 	}
 
     void functionButtonDemarrer()
@@ -289,6 +316,46 @@ public class WindowsButton : MonoBehaviour {
             GameObject.Find("GPU").GetComponent<GPU>().Destroy(); // Destroy GPU
             contenuScroll.AddText("La carte graphique n'est plus détectée.");
             // StartCoroutine(flou());
+        }
+    }
+
+    void functionVictoire()
+    {
+        listButtons = this.GetComponentsInChildren<Button>();
+        for (int i = 0; i < listButtons.Length; i++)
+        {
+            if(listButtons[i].name != "Accepter" && listButtons[i].name != "Cancel" && listButtons[i].name != "OK")
+            {
+                listButtons[i].enabled = false;
+            }
+        }
+        var index = victoryPop.transform.GetSiblingIndex();
+        victoryPop.transform.SetSiblingIndex(index+4);
+        if (!boolVictoryPop)
+        {
+            boolVictoryPop = true;
+            victoryPop.SetActive(boolVictoryPop);
+            boolVictoryPop = false;
+            conditionVictoire = false;
+        }
+    }
+
+    void functionButtonAcceptUpdate()
+    {
+        SceneManager.LoadScene("menu2");
+    }
+
+    void functionButtonRefuseUpdate()
+    {
+        var index = forceUpdate.transform.GetSiblingIndex();
+        forceUpdate.transform.SetSiblingIndex(index + 4);
+        if (!boolForceUpdate)
+        {
+            boolVictoryPop = false;
+            victoryPop.SetActive(boolVictoryPop);
+            boolForceUpdate = true;
+            forceUpdate.SetActive(boolForceUpdate);
+            boolForceUpdate = false;
         }
     }
 
