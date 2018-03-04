@@ -36,8 +36,8 @@ public class TextScrollview : MonoBehaviour {
 	public void AddText(string txt){	
 		var clone=Instantiate(prefab,new Vector3(),new Quaternion(),this.transform);
 		clone.text+=txt+" ";
-		RectTransform rt = clone.GetComponent<RectTransform>();
-		rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,decalage*compteur, rt.rect.height);
+		//RectTransform rt = clone.GetComponent<RectTransform>();
+		//rt.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,decalage*compteur, rt.rect.height);
 
 		//active Item
 		if(activeItem!=null){
