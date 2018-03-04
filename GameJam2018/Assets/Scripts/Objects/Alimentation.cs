@@ -33,9 +33,9 @@ public class Alimentation : BaseObject {
         base.Repare();
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "AlimentationEmplacement")
+        if (collision.tag == "AlimentationEmplacement" && transform.parent == null)
         {
             Debug.Log("Alim est qu bon endroit");
 
@@ -46,7 +46,6 @@ public class Alimentation : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet"); 
-                base.Repare(); 
             }
             
         }

@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - AlimentationEmplacement
+  - CPUEmplacement
+  - FanEmplacement
+  - PortEmplacement
+  - HDDEmplacement
+  - GPUEmplacement
+  - CableEmplacement
+  - VisEmplacement
   layers:
   - Default
   - TransparentFX

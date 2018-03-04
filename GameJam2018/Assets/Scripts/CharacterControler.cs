@@ -10,7 +10,7 @@ public class CharacterControler : MonoBehaviour
     public GameObject closestObject;
     Vector3 pos;
     float minDistObject;
-    GameObject pickedUpObject;
+    public GameObject pickedUpObject;
     Vector3 pickedUpItemPos;
 
     // Use this for initialization
@@ -117,10 +117,5 @@ public class CharacterControler : MonoBehaviour
         {
             closestObject = null;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
     }
 }

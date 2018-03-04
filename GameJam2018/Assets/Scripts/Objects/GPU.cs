@@ -34,9 +34,9 @@ public class GPU : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "GPUEmplacement")
+        if (collision.tag == "GPUEmplacement" && transform.parent == null)
         {
             Debug.Log("GPU est au bon endroit");
 
@@ -47,7 +47,6 @@ public class GPU : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }

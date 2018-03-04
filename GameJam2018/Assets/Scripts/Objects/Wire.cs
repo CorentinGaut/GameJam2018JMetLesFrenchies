@@ -35,9 +35,9 @@ public class Wire : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "CableEmplacement")
+        if (collision.tag == "CableEmplacement" && transform.parent == null)
         {
             Debug.Log("Cable est au bon endroit");
 
@@ -48,7 +48,6 @@ public class Wire : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }

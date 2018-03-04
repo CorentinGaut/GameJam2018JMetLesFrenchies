@@ -34,9 +34,9 @@ public class Port : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "PortEmplacement")
+        if (collision.tag == "PortEmplacement" && transform.parent == null)
         {
             Debug.Log("Port est au bon endroit");
 
@@ -46,8 +46,7 @@ public class Port : BaseObject {
             }
             else
             {
-                Debug.Log("Reparer l'objet");
-                base.Repare();
+                Debug.Log("Il faut reparer l'objet");
             }
 
         }

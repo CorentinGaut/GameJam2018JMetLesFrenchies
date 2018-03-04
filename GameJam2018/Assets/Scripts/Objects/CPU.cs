@@ -34,9 +34,9 @@ public class CPU : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "CPUEmplacement")
+        if (collision.tag == "CPUEmplacement" && transform.parent == null)
         {
             Debug.Log("CPU est au bon endroit");
 
@@ -47,7 +47,6 @@ public class CPU : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }

@@ -35,9 +35,9 @@ public class Fan : BaseObject {
     }
 
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider collision)
     {
-        if (collision.tag == "FaneEmplacement")
+        if (collision.tag == "FaneEmplacement" && transform.parent == null)
         {
             Debug.Log("Fane est au bon endroit");
 
@@ -48,7 +48,6 @@ public class Fan : BaseObject {
             else
             {
                 Debug.Log("Reparer l'objet");
-                base.Repare();
             }
 
         }
