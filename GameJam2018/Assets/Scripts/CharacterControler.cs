@@ -57,7 +57,7 @@ public class CharacterControler : MonoBehaviour
 
         Camera.main.transform.position = gameObject.transform.position + new Vector3(0, 10, -10);
 
-        if (Input.GetButtonDown("Repare"))
+        if (Input.GetButtonDown("Repare") && closestObject != null)
         {
             anim.SetBool("isReparing", true);
             StartCoroutine(WaitAnim());
@@ -72,14 +72,14 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("RotateD"))
         {
-            if (pickedUpObject == null)
+            if (pickedUpObject == null&& closestObject != null)
                 closestObject.Rotate(45);
             Debug.Log("droite");
         }
 
         if (Input.GetButtonDown("RotateG"))
         {
-            if(pickedUpObject == null)
+            if(pickedUpObject == null && closestObject != null)
             closestObject.Rotate(-45);
             Debug.Log("gauche");
         }
@@ -87,7 +87,8 @@ public class CharacterControler : MonoBehaviour
 
         if (Input.GetButtonDown("Poser"))
         {
-            PickUp();
+            if (closestObject != null)
+                PickUp();
         }
 
         pos = gameObject.transform.position;
@@ -152,15 +153,20 @@ public class CharacterControler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.GetComponent<BaseObject>()!=null)
         closeObjects.Add(other.gameObject.GetComponent<BaseObject>());
     }
     private void OnTriggerExit(Collider other)
     {
-        closeObjects.Remove(other.gameObject.GetComponent<BaseObject>());
-        if(closeObjects.Count==0)
+        if (other.GetComponent<BaseObject>() != null)
         {
-            closestObject = null;
+            closeObjects.Remove(other.gameObject.GetComponent<BaseObject>());
+            if(closeObjects.Count==0)
+            {
+                closestObject = null;
+            }
         }
+
     }
 
     IEnumerator FinStun(){

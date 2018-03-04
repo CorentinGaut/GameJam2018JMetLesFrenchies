@@ -8,7 +8,6 @@ public class HDD : BaseObject {
     void Start()
     {
         baseHeight = gameObject.transform.position.y;
-
         HP = 500;
         maxHP = 500;
         isRepared = true;
